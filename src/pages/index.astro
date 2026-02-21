@@ -1,11 +1,1036 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const slides = [
+  {
+    title: 'PREVENCION',
+    message: 'LA INTEGRIDAD DE SUS EQUIPOS Y BIENES ES NUESTRA PRIORIDAD',
+    image: '/images/movisafe/unoMOVISAFE.jpg'
+  },
+  {
+    title: 'PROTECCION',
+    message: 'LA INTEGRIDAD DE SUS EQUIPOS Y BIENES ES NUESTRA PRIORIDAD',
+    image: '/images/movisafe/dos.jpg'
+  },
+  {
+    title: 'ASESORIA Y CAPACITACION',
+    message: 'LA INTEGRIDAD DE SUS EQUIPOS Y BIENES ES NUESTRA PRIORIDAD',
+    image: '/images/movisafe/tres.jpg'
+  }
+];
+
+const navLinks = [
+  { label: 'Quienes Somos', href: '#quienes' },
+  { label: 'Nuestros Clientes', href: '#clientes' },
+  { label: 'Nuestras Soluciones', href: '#soluciones' },
+  { label: 'Unase a nuestro equipo', href: '#contacto' },
+  { label: 'Noticias', href: '#footer-links' }
+];
+
+const stats = [
+  {
+    icon: '/images/movisafe/ICONOS_Mesa-de-trabajo-1-rj1655tpr0oh6hhnd3vn1gqlv8lmao3tvo9dyja4g0.png',
+    value: '+ 100',
+    label: 'Clientes atendidos'
+  },
+  {
+    icon: '/images/movisafe/ICONOS-02-rj165v7cvjn7vygs8wukesc1wn4j2hwkz5vhx08hs0.png',
+    value: '+ 800',
+    label: 'Misiones'
+  },
+  {
+    icon: '/images/movisafe/ICONOS-03-rj165f83nd1cel3zu7xwqed7t3bafn558ys8raw6ps.png',
+    value: '5',
+    label: 'Oficinas en el mundo'
+  }
+];
+
+const clients = [
+  '/images/movisafe/clientes_movisafe-1-1-300x300.png',
+  '/images/movisafe/clientes_movisafe-5-1-300x300.png',
+  '/images/movisafe/clientes_movisafe-4-1-300x300.png'
+];
+
+const solutions = [
+  {
+    title: 'Prevencion',
+    image: '/images/movisafe/shutterstock_669226189.jpg',
+    href: '#'
+  },
+  {
+    title: 'Proteccion',
+    image: '/images/movisafe/shutterstock_639923053.jpg',
+    href: '#'
+  },
+  {
+    title: 'Asesoria y Capacitacion',
+    image: '/images/movisafe/soluciones-03.png',
+    href: '#'
+  }
+];
+
+const commitments = [
+  {
+    title: 'Permiso SSP y Federal',
+    description: 'Federal: DGSP/136-08/1133 | Estado de Mexico: CES/280/13-09/III-SP'
+  },
+  {
+    title: 'Prevencion, proteccion y asesoria',
+    description: 'Expertos en seguridad para su empresa y sus colaboradores las 24 horas 365 dias del ano.'
+  },
+  {
+    title: 'Nuestros valores',
+    description:
+      'Confidencialidad, reactividad, transparencia, honestidad, altos estandares de calidad y conviccion de que cada cliente es unico.'
+  }
+];
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Movisafe - Expertos en seguridad integral" description="Clon del home de Movisafe en Astro">
+  <header class="site-header" id="top">
+    <div class="container nav-wrap">
+      <a class="brand" href="#top" aria-label="Movisafe inicio">
+        <img src="/images/movisafe/Movisafe-logo-1000x348-v1.0.svg" alt="Movisafe" />
+      </a>
+
+      <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav id="primary-nav" class="primary-nav" aria-label="Navegacion principal">
+        <ul>
+          {navLinks.map((link) => (
+            <li><a href={link.href}>{link.label}</a></li>
+          ))}
+          <li class="lang-pill"><a href="#">ESP</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-label="Portada de servicios">
+      <div class="hero-track">
+        {slides.map((slide, index) => (
+          <article
+            class={`hero-slide ${index === 0 ? 'is-active' : ''}`}
+            data-slide
+            style={`background-image: url('${slide.image}')`}
+            aria-hidden={index === 0 ? 'false' : 'true'}
+          >
+            <div class="hero-overlay"></div>
+            <img class="hero-shape" src="/images/movisafe/capa.png" alt="" aria-hidden="true" />
+            <div class="container hero-inner">
+              <div class="hero-copy">
+                <p class="hero-title">{slide.title}</p>
+                <p class="hero-message">{slide.message}</p>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div class="hero-dots" aria-label="Navigation slider">
+        {slides.map((_, index) => (
+          <button
+            type="button"
+            class={`hero-dot ${index === 0 ? 'is-active' : ''}`}
+            data-slide-dot
+            data-target={index}
+            aria-label={`Voir slide ${index + 1}`}
+          ></button>
+        ))}
+      </div>
+    </section>
+
+    <section id="quienes" class="section about">
+      <div class="container about-grid">
+        <div class="about-content">
+          <p class="eyebrow">QUIENES SOMOS</p>
+          <h1>EXPERTOS EN SEGURIDAD INTEGRAL</h1>
+          <div class="divider"></div>
+
+          <div class="stats-grid">
+            {stats.map((item) => (
+              <article class="stat-card">
+                <img src={item.icon} alt="" aria-hidden="true" loading="lazy" />
+                <p class="stat-value">{item.value}</p>
+                <p class="stat-label">{item.label}</p>
+              </article>
+            ))}
+          </div>
+
+          <a class="btn btn-red" href="#contacto">SABER MAS</a>
+        </div>
+
+        <div class="about-media">
+          <img src="/images/movisafe/exp_esp.png" alt="Experiencia Movisafe" loading="lazy" />
+          <div class="experience-badge">
+            <span>22</span>
+            <small>ANOS DE EXPERIENCIA</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="clientes" class="section clients">
+      <div class="container center-content">
+        <h2>Nuestros Clientes</h2>
+        <div class="divider"></div>
+
+        <div class="client-logos" role="list">
+          {clients.map((logo) => (
+            <figure role="listitem">
+              <img src={logo} alt="Logo cliente" loading="lazy" />
+            </figure>
+          ))}
+        </div>
+
+        <a class="btn btn-red" href="#">SABER MAS</a>
+      </div>
+    </section>
+
+    <section id="soluciones" class="section solutions">
+      <div class="container center-content">
+        <h2>Nuestras Soluciones</h2>
+        <div class="divider divider-light"></div>
+
+        <div class="solutions-grid">
+          {solutions.map((solution) => (
+            <article class="solution-card" style={`background-image:url('${solution.image}')`}>
+              <div class="solution-overlay">
+                <a href={solution.href} class="btn btn-outline">{solution.title}</a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section commitment">
+      <div class="container center-content">
+        <h2>Nuestro compromiso</h2>
+        <div class="divider"></div>
+
+        <div class="commitment-grid">
+          {commitments.map((item, index) => (
+            <article class="commitment-card">
+              <div class="icon" aria-hidden="true">
+                {
+                  index === 0 ? (
+                    <svg viewBox="0 0 24 24" role="presentation">
+                      <path d="M12 2l8 3v6c0 5-3.4 9.7-8 11-4.6-1.3-8-6-8-11V5l8-3zm0 2.2L6 6.4v4.5c0 3.8 2.5 7.4 6 8.5 3.5-1.1 6-4.7 6-8.5V6.4l-6-2.2z"></path>
+                    </svg>
+                  ) : index === 1 ? (
+                    <svg viewBox="0 0 24 24" role="presentation">
+                      <path d="M5 3h14v18H5V3zm2 2v14h10V5H7zm1.7 7.7l1.6-1.6 1.7 1.7 3.3-3.3 1.4 1.4-4.7 4.7-3.3-3.3z"></path>
+                    </svg>
+                  ) : (
+                    <svg viewBox="0 0 24 24" role="presentation">
+                      <path d="M3 5h14v10H3V5zm2 2v6h10V7H5zm15 2h1a2 2 0 012 2v2h-3v3h-4v-3h-2v-2h3a2 2 0 012-2h1V9z"></path>
+                    </svg>
+                  )
+                }
+              </div>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="section contact">
+      <div class="contact-overlay"></div>
+      <div class="container contact-grid">
+        <div class="contact-form-wrap">
+          <p class="eyebrow light">CONTACTENOS</p>
+          <h2>Deje sus datos y nosotros le contactaremos</h2>
+          <div class="divider divider-light"></div>
+
+          <form class="contact-form" action="#" method="post">
+            <label>
+              Nombre completo
+              <input type="text" name="name" placeholder="Nombre completo" />
+            </label>
+            <div class="form-row">
+              <label>
+                Correo
+                <input type="email" name="email" placeholder="Correo" required />
+              </label>
+              <label>
+                Telefono
+                <input type="tel" name="phone" placeholder="Telefono" required />
+              </label>
+            </div>
+            <label>
+              Mensaje
+              <textarea name="message" rows="4" placeholder="Mensaje"></textarea>
+            </label>
+            <button class="btn btn-red" type="submit">Enviar</button>
+          </form>
+        </div>
+
+        <aside class="contact-card">
+          <p>(55) 5576 9027 / (55) 8934 9750</p>
+          <p>contacto@oliviers49.sg-host.com</p>
+          <p>
+            Boulevard de Popocatepetl 285,<br />
+            Col. Los Pirules, CP 54040,<br />
+            Tlalnepantla de Baz, Edo. de Mexico
+          </p>
+          <p>Lunes a Viernes<br />9:00 hrs - 18:00 hrs</p>
+          <p><a href="#">Aviso de Privacidad</a></p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="footer-links">
+    <div class="container footer-links">
+      <a href="#">Quienes Somos</a>
+      <a href="#">Nuestros Clientes</a>
+      <a href="#">Nuestras Soluciones</a>
+      <a href="#">Unase a nuestro equipo</a>
+      <a href="#">Noticias</a>
+      <a href="#">ESP</a>
+    </div>
+  </footer>
 </Layout>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: color-mix(in srgb, var(--mv-blue) 96%, black);
+    box-shadow: 0 8px 20px rgb(0 0 0 / 0.2);
+  }
+
+  .nav-wrap {
+    display: grid;
+    grid-template-columns: 170px 1fr;
+    align-items: center;
+    min-height: 78px;
+    gap: 1.5rem;
+  }
+
+  .brand img {
+    width: 150px;
+  }
+
+  .primary-nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1.1rem;
+  }
+
+  .primary-nav a {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+  }
+
+  .primary-nav a:hover {
+    color: #d6e4ff;
+  }
+
+  .lang-pill a {
+    border: 1px solid rgb(255 255 255 / 0.5);
+    border-radius: 999px;
+    padding: 0.22rem 0.62rem;
+    font-size: 0.68rem;
+  }
+
+  .menu-toggle {
+    display: none;
+    margin-left: auto;
+    border: 0;
+    background: none;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .menu-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    margin: 5px auto;
+    background: #ffffff;
+  }
+
+  .hero {
+    position: relative;
+    min-height: 540px;
+    overflow: hidden;
+    background: #09213e;
+  }
+
+  .hero-track {
+    position: relative;
+    min-height: 540px;
+  }
+
+  .hero-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.04);
+    transition: opacity 0.7s ease, transform 0.9s ease;
+  }
+
+  .hero-slide.is-active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+    z-index: 2;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(100deg, rgb(7 19 43 / 0.82), rgb(3 20 44 / 0.48));
+  }
+
+  .hero-shape {
+    position: absolute;
+    top: 50%;
+    left: -190px;
+    width: min(1100px, 90vw);
+    transform: translateY(-50%);
+    opacity: 0.7;
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 3;
+    min-height: 540px;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero-copy {
+    max-width: 560px;
+    color: #ffffff;
+    background: rgb(7 20 45 / 0.55);
+    border-left: 3px solid var(--mv-red);
+    padding: 1.45rem 1.5rem;
+  }
+
+  .hero-title {
+    margin: 0 0 0.35rem;
+    font-size: clamp(1.7rem, 4.7vw, 3.2rem);
+    font-weight: 900;
+    letter-spacing: 0.02em;
+    line-height: 1;
+  }
+
+  .hero-message {
+    margin: 0;
+    max-width: 480px;
+    font-size: clamp(1.02rem, 2.2vw, 1.4rem);
+    font-weight: 800;
+    line-height: 1.35;
+  }
+
+  .hero-dots {
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 4;
+  }
+
+  .hero-dot {
+    width: 11px;
+    height: 11px;
+    border: 1px solid #ffffff;
+    background: transparent;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .hero-dot.is-active {
+    background: #ffffff;
+  }
+
+  .section {
+    padding: 4.25rem 0;
+  }
+
+  .about {
+    background: var(--mv-light);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
+    gap: 2.3rem;
+    align-items: center;
+  }
+
+  .eyebrow {
+    margin: 0;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #5f6775;
+  }
+
+  .about h1,
+  .section h2 {
+    margin: 0.45rem 0 0;
+    color: var(--mv-blue-deep);
+    font-size: clamp(1.5rem, 2.8vw, 2rem);
+    line-height: 1.1;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  .divider {
+    width: 140px;
+    height: 3px;
+    margin: 1.35rem 0 2rem;
+    background: var(--mv-red);
+  }
+
+  .center-content {
+    text-align: center;
+  }
+
+  .center-content .divider {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.1rem;
+  }
+
+  .stat-card {
+    text-align: center;
+    border-right: 1px solid rgb(0 0 0 / 0.08);
+    padding: 0.4rem 0.4rem 0.5rem;
+  }
+
+  .stat-card:last-child {
+    border-right: 0;
+  }
+
+  .stat-card img {
+    width: 35px;
+    margin: 0 auto 0.52rem;
+  }
+
+  .stat-value {
+    margin: 0;
+    font-size: clamp(1.45rem, 2vw, 2.05rem);
+    font-weight: 900;
+    color: #2a2f39;
+  }
+
+  .stat-label {
+    margin: 0.2rem 0 0;
+    font-size: 0.78rem;
+    color: #6c6f75;
+  }
+
+  .btn {
+    display: inline-block;
+    margin-top: 1.55rem;
+    padding: 0.42rem 0.9rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 1px solid transparent;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .btn-red {
+    background: var(--mv-red);
+    color: #ffffff;
+  }
+
+  .btn-red:hover {
+    background: var(--mv-blue);
+  }
+
+  .about-media {
+    position: relative;
+    padding: 0.35rem 0;
+  }
+
+  .about-media img {
+    width: 100%;
+    max-width: 490px;
+    margin-left: auto;
+  }
+
+  .experience-badge {
+    position: absolute;
+    left: -0.8rem;
+    bottom: 1.2rem;
+    display: flex;
+    align-items: flex-end;
+    gap: 0.55rem;
+    padding: 0.45rem 0.62rem;
+    border: 3px solid var(--mv-red);
+    background: rgb(255 255 255 / 0.88);
+  }
+
+  .experience-badge span {
+    font-size: 3rem;
+    line-height: 0.92;
+    font-weight: 900;
+    color: #2a2f38;
+  }
+
+  .experience-badge small {
+    max-width: 74px;
+    font-size: 0.56rem;
+    line-height: 1.1;
+    font-weight: 700;
+    color: var(--mv-blue);
+    text-transform: uppercase;
+  }
+
+  .clients {
+    background: #ffffff;
+  }
+
+  .clients h2,
+  .commitment h2 {
+    color: var(--mv-blue-deep);
+  }
+
+  .client-logos {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.1rem;
+    align-items: center;
+    margin-top: 0.35rem;
+  }
+
+  .client-logos figure {
+    margin: 0;
+    padding: 0.3rem;
+  }
+
+  .client-logos img {
+    width: min(280px, 100%);
+    margin: 0 auto;
+  }
+
+  .solutions {
+    background: var(--mv-blue-deep);
+    color: #ffffff;
+  }
+
+  .solutions h2 {
+    color: #ffffff;
+  }
+
+  .divider-light {
+    background: #ffffff;
+  }
+
+  .solutions-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 0.2rem;
+  }
+
+  .solution-card {
+    min-height: 220px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .solution-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 1rem;
+    background: linear-gradient(to top, rgb(0 0 0 / 0.74), rgb(0 0 0 / 0.05) 70%);
+    transition: background 0.25s ease;
+  }
+
+  .solution-card:hover .solution-overlay {
+    background: linear-gradient(to top, rgb(0 0 0 / 0.82), rgb(0 0 0 / 0.38));
+  }
+
+  .btn-outline {
+    margin: 0;
+    border-color: #ffffff;
+    color: #ffffff;
+    background: rgb(0 0 0 / 0.25);
+    min-width: 154px;
+    text-align: center;
+  }
+
+  .btn-outline:hover {
+    background: #ffffff;
+    color: var(--mv-blue-deep);
+  }
+
+  .commitment {
+    background: var(--mv-light);
+  }
+
+  .commitment-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.3rem;
+  }
+
+  .commitment-card {
+    text-align: center;
+    color: var(--mv-blue-deep);
+  }
+
+  .commitment-card .icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 0.58rem;
+    color: var(--mv-blue-deep);
+  }
+
+  .commitment-card svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+  }
+
+  .commitment-card h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .commitment-card p {
+    margin: 0.62rem 0 0;
+    font-size: 0.82rem;
+    line-height: 1.4;
+  }
+
+  .contact {
+    position: relative;
+    background-image: url('/images/movisafe/Recurso-1.png');
+    background-size: cover;
+    background-position: center;
+    color: #ffffff;
+  }
+
+  .contact-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgb(0 0 0 / 0.62);
+  }
+
+  .contact-grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: 2.1rem;
+    align-items: start;
+  }
+
+  .light {
+    color: rgb(255 255 255 / 0.86);
+  }
+
+  .contact h2 {
+    color: #ffffff;
+  }
+
+  .contact-form {
+    margin-top: 0.2rem;
+  }
+
+  .contact-form label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 0.72rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    margin-top: 0.32rem;
+    border: 1px solid rgb(255 255 255 / 0.3);
+    background: #ffffff;
+    color: #232833;
+    padding: 0.52rem 0.64rem;
+    font: inherit;
+  }
+
+  .contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.72rem;
+  }
+
+  .contact-form .btn {
+    margin-top: 0.25rem;
+    cursor: pointer;
+  }
+
+  .contact-card {
+    border: 3px solid rgb(255 255 255 / 0.8);
+    padding: 1.1rem 1rem;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    background: rgb(25 26 33 / 0.24);
+  }
+
+  .contact-card p {
+    margin: 0 0 1rem;
+  }
+
+  .contact-card p:last-child {
+    margin-bottom: 0;
+    color: #ffb4b7;
+  }
+
+  .contact-card a {
+    color: #ffb4b7;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+  }
+
+  .site-footer {
+    background: #f7f7f7;
+    border-top: 1px solid #ececec;
+    padding: 0.78rem 0;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.86rem;
+  }
+
+  .footer-links a {
+    font-size: 0.63rem;
+    color: #d07183;
+    text-transform: lowercase;
+  }
+
+  @media (max-width: 1080px) {
+    .nav-wrap {
+      grid-template-columns: 145px 1fr;
+    }
+
+    .primary-nav ul {
+      gap: 0.75rem;
+    }
+
+    .primary-nav a {
+      font-size: 0.63rem;
+    }
+
+    .hero,
+    .hero-track,
+    .hero-inner {
+      min-height: 470px;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .menu-toggle {
+      display: block;
+    }
+
+    .primary-nav {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--mv-blue);
+      border-top: 1px solid rgb(255 255 255 / 0.15);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .primary-nav.is-open {
+      max-height: 420px;
+    }
+
+    .primary-nav ul {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+      padding: 0.4rem 0;
+    }
+
+    .primary-nav li {
+      width: 100%;
+    }
+
+    .primary-nav a {
+      display: block;
+      width: 100%;
+      padding: 0.72rem 1.1rem;
+      font-size: 0.72rem;
+    }
+
+    .lang-pill a {
+      border: 0;
+      border-radius: 0;
+      padding: 0.72rem 1.1rem;
+    }
+
+    .about-grid,
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 1.8rem;
+    }
+
+    .about-media {
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .about-media img {
+      margin: 0 auto;
+    }
+
+    .experience-badge {
+      left: 0;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .hero,
+    .hero-track,
+    .hero-inner {
+      min-height: 410px;
+    }
+
+    .hero-copy {
+      max-width: 90%;
+      padding: 1rem;
+    }
+
+    .section {
+      padding: 3.1rem 0;
+    }
+
+    .stats-grid,
+    .client-logos,
+    .solutions-grid,
+    .commitment-grid,
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+
+    .stat-card {
+      border-right: 0;
+      border-bottom: 1px solid rgb(0 0 0 / 0.08);
+      padding-bottom: 1rem;
+    }
+
+    .stat-card:last-child {
+      border-bottom: 0;
+    }
+
+    .solution-card {
+      min-height: 190px;
+    }
+
+    .contact-card {
+      font-size: 0.82rem;
+    }
+  }
+</style>
+
+<script is:inline>
+  const nav = document.querySelector('.primary-nav');
+  const toggle = document.querySelector('.menu-toggle');
+
+  if (nav && toggle) {
+    toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+
+    nav.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  const slides = Array.from(document.querySelectorAll('[data-slide]'));
+  const dots = Array.from(document.querySelectorAll('[data-slide-dot]'));
+
+  if (slides.length > 1 && dots.length === slides.length) {
+    let current = 0;
+    let timer;
+
+    const setSlide = (nextIndex) => {
+      slides.forEach((slide, index) => {
+        const isActive = index === nextIndex;
+        slide.classList.toggle('is-active', isActive);
+        slide.setAttribute('aria-hidden', String(!isActive));
+      });
+
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('is-active', index === nextIndex);
+      });
+
+      current = nextIndex;
+    };
+
+    const restart = () => {
+      clearInterval(timer);
+      timer = setInterval(() => {
+        setSlide((current + 1) % slides.length);
+      }, 5000);
+    };
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        setSlide(index);
+        restart();
+      });
+    });
+
+    restart();
+  }
+</script>
