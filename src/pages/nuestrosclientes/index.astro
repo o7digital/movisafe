@@ -1,0 +1,135 @@
+---
+import SitePage from '../../layouts/SitePage.astro';
+import '../../styles/inner-pages.css';
+
+const values = [
+  {
+    title: 'Reactividad',
+    image: '/images/movisafe/pages/CLIENTES-1-rj166r5wazv7ejyhnpgvt20ebgll86u4zexlwsuyow.png'
+  },
+  {
+    title: 'Eficiencia',
+    image: '/images/movisafe/pages/CLIENTES-2-rj1698gkc99g1ics6a2fvxh6r2dgjfomzowqi36k9i.png'
+  },
+  {
+    title: 'Confidencialidad',
+    image: '/images/movisafe/pages/CLIENTES-3-rj168fbkge5k1lj3wfh08mtwc4d2wtgyjooomidrme.png'
+  },
+  {
+    title: 'Discrecion',
+    image: '/images/movisafe/pages/CLIENTES-4-rj168edq9k49pzkh1x2do52fqqhpp4d87k1758f5sw.png'
+  }
+];
+
+const logos = [
+  '/images/movisafe/clientes_movisafe-5-1-300x300.png',
+  '/images/movisafe/clientes_movisafe-4-1-300x300.png',
+  '/images/movisafe/pages/clientes_movisafe-2-1-300x300.png',
+  '/images/movisafe/clientes_movisafe-1-1-300x300.png',
+  '/images/movisafe/pages/clientes_movisafe-6-1-300x300.png'
+];
+
+const missions = [
+  {
+    title: 'Auditoria de seguridad',
+    image: '/images/movisafe/tres.jpg'
+  },
+  {
+    title: 'Transferencia entre almacenes',
+    image: '/images/movisafe/unoMOVISAFE.jpg'
+  },
+  {
+    title: 'Transporte VIP sobre medida',
+    image: '/images/movisafe/pages/Recurso-3.png'
+  },
+  {
+    title: 'Seguridad VIP',
+    image: '/images/movisafe/dos.jpg'
+  }
+];
+---
+
+<SitePage
+  title="Movisafe - Nuestros Clientes"
+  description="Clientes y casos de uso Movisafe"
+  active="nuestrosclientes"
+>
+  <main class="page-main">
+    <section class="page-hero" style="background-image:linear-gradient(180deg, #001d3f, #031f40)">
+      <div class="container">
+        <p class="page-hero-kicker">Nuestros Clientes</p>
+        <h1>Nuestros Clientes</h1>
+        <div class="page-divider"></div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="container">
+        <p class="page-subtitle">
+          Porque sabemos que cada cliente tiene necesidades diferentes, nuestras soluciones son desarrolladas a la
+          medida de sus requerimientos.
+        </p>
+        <div class="section-divider"></div>
+
+        <div class="icon-grid icon-grid--4">
+          {values.map((item) => (
+            <article class="icon-item">
+              <img src={item.image} alt={item.title} loading="lazy" />
+              <h3>{item.title}</h3>
+            </article>
+          ))}
+        </div>
+
+        <p class="page-subtitle" style="margin-top:1.4rem;">Son obligatorias en cada una de nuestras propuestas.</p>
+      </div>
+    </section>
+
+    <section class="page-section page-section--alt">
+      <div class="container">
+        <h2 class="page-title">Empresas que confian en Movisafe</h2>
+        <div class="section-divider"></div>
+
+        <div class="icon-grid logos-grid">
+          {logos.map((logo) => (
+            <article class="icon-item" style="padding:0.6rem;">
+              <img src={logo} alt="Cliente Movisafe" loading="lazy" />
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="container">
+        <h2 class="page-title">Unos ejemplos de misiones</h2>
+        <div class="section-divider"></div>
+
+        <div class="mission-grid">
+          {missions.map((mission) => (
+            <article class="mission-card" style={`background-image:url('${mission.image}')`}>
+              <h3>{mission.title}</h3>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+</SitePage>
+
+<style>
+  .logos-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  @media (max-width: 1040px) {
+    .logos-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 760px) {
+    .logos-grid {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+  }
+</style>

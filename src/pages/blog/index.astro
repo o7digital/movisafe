@@ -1,0 +1,126 @@
+---
+import SitePage from '../../layouts/SitePage.astro';
+import '../../styles/inner-pages.css';
+
+const posts = [
+  {
+    title: 'Medidas de seguridad ante un viaje',
+    date: '23 October, 2020',
+    excerpt:
+      'Importancia de la informacion de seguridad en viajes de negocios o de entretenimiento, y recomendaciones para reducir exposicion a incidentes.',
+    image: '/images/movisafe/pages/viajeros-informacion-300x300.jpg',
+    href: 'https://movisafe.com/2020/10/medidas-de-seguridad-ante-un-viaje/'
+  },
+  {
+    title: 'El phishing como modalidad de fraude',
+    date: '20 October, 2020',
+    excerpt:
+      'Como evolucionan los fraudes digitales y que medidas de prevencion adoptar para disminuir riesgo en organizaciones y personas.',
+    image: '/images/movisafe/pages/phishing-mexico-300x300.jpg',
+    href: 'https://movisafe.com/2020/10/el-phishing-como-modalidad-de-fraude/'
+  },
+  {
+    title: 'Toma de casetas: entre la protesta y el negocio',
+    date: '16 October, 2020',
+    excerpt:
+      'Analisis de un fenomeno de impacto en movilidad y logistica, y su relacion con seguridad operacional en Mexico.',
+    image: '/images/movisafe/pages/casetas-mexico-300x300.jpg',
+    href: 'https://movisafe.com/2020/10/toma-de-casetas-entre-la-protesta-y-el-negocios/'
+  },
+  {
+    title: 'La patrona o el sobre amarillo: los fraudes al acecho',
+    date: '13 October, 2020',
+    excerpt:
+      'Revision de esquemas de fraude telefonico y recomendaciones de respuesta para equipos administrativos y directivos.',
+    image: '/images/movisafe/pages/llamadas-fraudes-300x300.jpg',
+    href: 'https://movisafe.com/2020/10/la-patrona-o-el-sobre-amarillo-los-fraudes-al-acecho/'
+  },
+  {
+    title: 'Skimming, robo de informacion bancaria',
+    date: '9 October, 2020',
+    excerpt:
+      'Riesgos asociados al skimming y controles basicos para proteger medios de pago y datos bancarios.',
+    image: '/images/movisafe/pages/fraude-skimming-300x300.jpg',
+    href: 'https://movisafe.com/2020/10/skimming-robo-de-informacion-bancaria/'
+  },
+  {
+    title: 'Montachoques: la extorsion disfrazada de accidente',
+    date: '6 October, 2020',
+    excerpt:
+      'Panorama del modus operandi de montachoques y recomendaciones de actuacion para usuarios y empresas.',
+    image: '/images/movisafe/pages/montachoques-zmvm-300x300.jpg',
+    href: 'https://movisafe.com/2020/10/montachoques-la-extorsion-disfrazada-de-accidente/'
+  },
+  {
+    title: 'Las vias interrumpidas',
+    date: '2 October, 2020',
+    excerpt:
+      'Impacto de bloqueos y disrupciones en continuidad de negocio y cadena de suministro.',
+    image: '/images/movisafe/pages/vias-tren-300x300.jpg',
+    href: 'https://movisafe.com/2020/10/las-vias-interrumpidas/'
+  },
+  {
+    title: 'Vishing: la revolucion tecnologica del fraude',
+    date: '29 September, 2020',
+    excerpt:
+      'Como opera el vishing y que controles minimos implementar para mitigar intentos de ingenieria social.',
+    image: '/images/movisafe/pages/vishing-mexico-300x300.jpg',
+    href: 'https://movisafe.com/2020/09/vishing-la-revolucion-tecnologica-del-fraude/'
+  },
+  {
+    title: 'Retos para la seguridad nacional en la pandemia',
+    date: '25 September, 2020',
+    excerpt:
+      'Reflexion sobre riesgos y prioridades de seguridad en un entorno sanitario, economico y social adverso.',
+    image: '/images/movisafe/pages/blog_abril_01_insegurdiad_mexico_durante_pandemia-300x300.jpg',
+    href: 'https://movisafe.com/2020/09/retos-para-la-seguridad-nacional-mexicana-en-la-epoca-de-la-pandemia/'
+  }
+];
+
+const popular = posts.slice(0, 5);
+---
+
+<SitePage title="Movisafe - Noticias" description="Blog y noticias de seguridad" active="blog">
+  <main class="page-main">
+    <section class="page-hero" style="background-image:linear-gradient(180deg, #7e272b, #702226)">
+      <div class="container">
+        <p class="page-hero-kicker">Noticias</p>
+        <h1>Archive</h1>
+        <div class="page-divider"></div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="container blog-layout">
+        <div class="blog-grid">
+          {posts.map((post) => (
+            <article class="post-card">
+              <a href={post.href} target="_blank" rel="noopener">
+                <img src={post.image} alt={post.title} loading="lazy" />
+              </a>
+              <div class="post-body">
+                <h2 class="post-title">
+                  <a href={post.href} target="_blank" rel="noopener">{post.title}</a>
+                </h2>
+                <p class="post-meta">{post.date} • No Comments</p>
+                <p class="post-excerpt">{post.excerpt}</p>
+                <a class="post-link" href={post.href} target="_blank" rel="noopener">Read more</a>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <aside class="blog-side">
+          <h2>Mas populares</h2>
+          <ul>
+            {popular.map((post) => (
+              <li>
+                <a href={post.href} target="_blank" rel="noopener">{post.title}</a>
+              </li>
+            ))}
+          </ul>
+        </aside>
+      </div>
+    </section>
+  </main>
+</SitePage>

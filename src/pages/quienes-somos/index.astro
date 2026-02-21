@@ -1,0 +1,87 @@
+---
+import SitePage from '../../layouts/SitePage.astro';
+import '../../styles/inner-pages.css';
+
+const sectors = [
+  { label: 'Restaurantes', image: '/images/movisafe/pages/clientes_MOVI-09-150x150.png' },
+  { label: 'Hoteleria', image: '/images/movisafe/pages/clientes_MOVI-08-150x150.png' },
+  { label: 'Industria farmaceutica', image: '/images/movisafe/pages/clientes_MOVI-07-150x150.png' },
+  { label: 'Industria cosmetica', image: '/images/movisafe/pages/clientes_MOVI-06-150x150.png' },
+  { label: 'Vinos y licores', image: '/images/movisafe/pages/clientes_MOVI-05-150x150.png' },
+  { label: 'Industria manufacturera', image: '/images/movisafe/pages/clientes_MOVI-04-150x150.png' },
+  { label: 'Eventos', image: '/images/movisafe/pages/clientes_MOVI-03-150x150.png' },
+  { label: 'Aeroespacial', image: '/images/movisafe/pages/clientes_MOVI-02-150x150.png' },
+  { label: 'Lujo', image: '/images/movisafe/pages/clientes_MOVI_Mesa-de-trabajo-1-150x150.png' },
+  { label: 'Industria petroquimica', image: '/images/movisafe/pages/clientes_MOVI-10-150x150.png' }
+];
+---
+
+<SitePage
+  title="Movisafe - Quienes Somos"
+  description="Equipo y experiencia de Movisafe"
+  active="quienes-somos"
+>
+  <main class="page-main">
+    <section class="page-hero" style="background-image:url('/images/movisafe/pages/shutterstock_131393735.jpg')">
+      <div class="container">
+        <p class="page-hero-kicker">QUIENES SOMOS</p>
+        <h1>EXPERTOS EN SEGURIDAD INTEGRAL</h1>
+        <div class="page-divider"></div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="container two-col">
+        <div class="text-block">
+          <img
+            class="lead-icon"
+            src="/images/movisafe/pages/maspeque-rj165pkbqjfjzyfelga1ujcadpqqwwhb7qid8n4cn4.png"
+            alt="Movisafe"
+          />
+          <p>
+            Fundada en la Ciudad de Mexico, <strong>Movisafe</strong> atiende las necesidades de seguridad de
+            <strong>personas, familias</strong> y empresas nacionales e internacionales desde 2002.
+          </p>
+          <p>
+            Dirigidos por expertos con mas de 33 anos de experiencia acumulada, nuestros equipos multilingues
+            (espanol, frances, ingles, portugues) cuentan con trayectoria internacional en zonas sensibles.
+          </p>
+          <p>
+            Nuestra pericia cubre requerimientos personales y profesionales, desde la <strong>prevencion de
+            riesgos</strong> hasta el control de crisis.
+          </p>
+        </div>
+
+        <div class="gallery-row">
+          <img src="/images/movisafe/pages/somosESP-3.png" alt="Equipo Movisafe" loading="lazy" />
+          <img src="/images/movisafe/pages/somosESP-1.png" alt="Operacion Movisafe" loading="lazy" />
+          <img src="/images/movisafe/pages/somosESP-2.png" alt="Mision Movisafe" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section page-section--alt">
+      <div class="container">
+        <h2 class="page-title">Nuestra pericia abarca estos sectores</h2>
+        <div class="section-divider"></div>
+
+        <div class="icon-grid">
+          {sectors.map((sector) => (
+            <article class="icon-item">
+              <img src={sector.image} alt={sector.label} loading="lazy" />
+              <h3>{sector.label}</h3>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="container" style="text-align:center;">
+        <h2 class="page-title">Nuestras Soluciones</h2>
+        <div class="section-divider"></div>
+        <a class="btn-primary" href="/prevencion/">Ver soluciones</a>
+      </div>
+    </section>
+  </main>
+</SitePage>

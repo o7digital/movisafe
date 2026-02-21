@@ -1,0 +1,63 @@
+---
+import SitePage from '../../layouts/SitePage.astro';
+import '../../styles/inner-pages.css';
+
+const services = [
+  {
+    title: 'Capacitacion',
+    description:
+      'Alianzas con capacitadores registrados ante la STPS en seguridad y proteccion civil. Incluye manejo defensivo y evasivo antisecuestro, proteccion ejecutiva, manejo tactico blindado y sensibilizacion a gestion de crisis.'
+  },
+  {
+    title: 'Curso de prevencion y riesgos',
+    description:
+      'Para directores de sitio, recursos humanos y seguridad. Programas para sensibilizacion del contexto de seguridad en Mexico, con enfoque en gestion de crisis, briefing y optimizacion de capacidades internas.'
+  }
+];
+---
+
+<SitePage
+  title="Movisafe - Asesoria y Capacitacion"
+  description="Soluciones Movisafe en asesoria y capacitacion"
+  active="asesoriaycapacitacion"
+>
+  <main class="page-main">
+    <section class="page-hero" style="background-image:url('/images/movisafe/soluciones-03.png')">
+      <div class="container">
+        <p class="page-hero-kicker">NUESTRAS SOLUCIONES EN</p>
+        <h1>ASESORIA Y CAPACITACION</h1>
+        <div class="page-divider"></div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="container">
+        <p class="page-subtitle">
+          Es fundamental que sus equipos adquieran buenos automatismos en seguridad y actualicen sus practicas frente
+          a amenazas actuales. Movisafe pone a disposicion a sus expertos para procesos de mejora continua.
+        </p>
+        <div class="section-divider"></div>
+
+        <div class="cards-grid cards-grid--2">
+          <article class="feature-card">
+            <img src="/images/movisafe/Recurso-1.png" alt="Asesoria" loading="lazy" />
+          </article>
+          <article class="feature-card">
+            <img src="/images/movisafe/pages/cursos.png" alt="Capacitacion" loading="lazy" />
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section page-section--alt">
+      <div class="container cards-grid cards-grid--2">
+        {services.map((service) => (
+          <article class="feature-card">
+            <h3>{service.title}</h3>
+            <p>{service.description}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  </main>
+</SitePage>

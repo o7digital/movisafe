@@ -1,0 +1,271 @@
+---
+interface Props {
+  active?: string;
+}
+
+const { active = '' } = Astro.props;
+const solutionActive = ['prevencion', 'proteccion', 'asesoriaycapacitacion'].includes(active);
+---
+
+<header class="site-header site-header--shared" id="top">
+  <div class="container nav-wrap">
+    <a class="brand" href="/" aria-label="Movisafe inicio">
+      <img src="/images/movisafe/Movisafe-logo-1000x348-v1.0.svg" alt="Movisafe" />
+    </a>
+
+    <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="primary-nav" class="primary-nav" aria-label="Navegacion principal">
+      <ul>
+        <li class={active === 'quienes-somos' ? 'is-active' : ''}><a href="/quienes-somos/">Quienes Somos</a></li>
+        <li class={active === 'nuestrosclientes' ? 'is-active' : ''}><a href="/nuestrosclientes/">Nuestros Clientes</a></li>
+        <li class={`has-submenu ${solutionActive ? 'is-active' : ''}`}>
+          <button type="button" class="submenu-toggle" aria-expanded="false">Nuestras Soluciones</button>
+          <ul class="submenu">
+            <li class={active === 'prevencion' ? 'is-active' : ''}><a href="/prevencion/">Prevencion</a></li>
+            <li class={active === 'proteccion' ? 'is-active' : ''}><a href="/proteccion/">Proteccion</a></li>
+            <li class={active === 'asesoriaycapacitacion' ? 'is-active' : ''}><a href="/asesoriaycapacitacion/">Asesoria y Capacitacion</a></li>
+          </ul>
+        </li>
+        <li class={active === 'nuestro-equipo' ? 'is-active' : ''}><a href="/nuestro-equipo/">Unase a nuestro equipo</a></li>
+        <li class={active === 'blog' ? 'is-active' : ''}><a href="/blog/">Noticias</a></li>
+        <li class="lang-pill"><a href="#">ESP</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header--shared {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in srgb, var(--mv-blue) 96%, black);
+    box-shadow: 0 8px 20px rgb(0 0 0 / 0.2);
+  }
+
+  .site-header--shared .nav-wrap {
+    display: grid;
+    grid-template-columns: 170px 1fr;
+    align-items: center;
+    min-height: 78px;
+    gap: 1.5rem;
+  }
+
+  .site-header--shared .brand img {
+    width: 150px;
+  }
+
+  .site-header--shared .primary-nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1.1rem;
+  }
+
+  .site-header--shared .primary-nav a,
+  .site-header--shared .submenu-toggle {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .site-header--shared .primary-nav a:hover,
+  .site-header--shared .submenu-toggle:hover,
+  .site-header--shared li.is-active > a,
+  .site-header--shared li.is-active > .submenu-toggle {
+    color: #d6e4ff;
+  }
+
+  .site-header--shared .has-submenu {
+    position: relative;
+  }
+
+  .site-header--shared .submenu {
+    position: absolute;
+    top: calc(100% + 0.45rem);
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 220px;
+    display: grid;
+    gap: 0;
+    padding: 0.35rem 0;
+    background: #0f1f3a;
+    border: 1px solid rgb(255 255 255 / 0.2);
+    box-shadow: 0 8px 22px rgb(0 0 0 / 0.35);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease;
+    z-index: 20;
+  }
+
+  .site-header--shared .has-submenu:hover .submenu,
+  .site-header--shared .has-submenu.is-open .submenu {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .site-header--shared .submenu a {
+    display: block;
+    text-transform: none;
+    font-size: 0.78rem;
+    padding: 0.45rem 0.8rem;
+  }
+
+  .site-header--shared .lang-pill a {
+    border: 1px solid rgb(255 255 255 / 0.5);
+    border-radius: 999px;
+    padding: 0.22rem 0.62rem;
+    font-size: 0.68rem;
+  }
+
+  .site-header--shared .menu-toggle {
+    display: none;
+    margin-left: auto;
+    border: 0;
+    background: none;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .site-header--shared .menu-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    margin: 5px auto;
+    background: #ffffff;
+  }
+
+  @media (max-width: 1080px) {
+    .site-header--shared .nav-wrap {
+      grid-template-columns: 145px 1fr;
+    }
+
+    .site-header--shared .primary-nav ul {
+      gap: 0.75rem;
+    }
+
+    .site-header--shared .primary-nav a,
+    .site-header--shared .submenu-toggle {
+      font-size: 0.63rem;
+    }
+  }
+
+  @media (max-width: 920px) {
+    .site-header--shared .menu-toggle {
+      display: block;
+    }
+
+    .site-header--shared .primary-nav {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--mv-blue);
+      border-top: 1px solid rgb(255 255 255 / 0.15);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .site-header--shared .primary-nav.is-open {
+      max-height: 520px;
+    }
+
+    .site-header--shared .primary-nav ul {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+      padding: 0.4rem 0;
+    }
+
+    .site-header--shared .primary-nav li {
+      width: 100%;
+      position: static;
+    }
+
+    .site-header--shared .primary-nav a,
+    .site-header--shared .submenu-toggle {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 0.72rem 1.1rem;
+      font-size: 0.72rem;
+    }
+
+    .site-header--shared .submenu {
+      position: static;
+      transform: none;
+      min-width: 100%;
+      opacity: 1;
+      visibility: visible;
+      display: none;
+      box-shadow: none;
+      border: 0;
+      background: rgb(255 255 255 / 0.05);
+      padding: 0;
+    }
+
+    .site-header--shared .has-submenu.is-open .submenu {
+      display: block;
+    }
+
+    .site-header--shared .submenu a {
+      padding-left: 1.9rem;
+    }
+
+    .site-header--shared .lang-pill a {
+      border: 0;
+      border-radius: 0;
+      padding: 0.72rem 1.1rem;
+    }
+  }
+</style>
+
+<script is:inline>
+  document.querySelectorAll('.site-header--shared').forEach((header) => {
+    const nav = header.querySelector('.primary-nav');
+    const toggle = header.querySelector('.menu-toggle');
+    const submenuHost = header.querySelector('.has-submenu');
+    const submenuToggle = header.querySelector('.submenu-toggle');
+
+    if (nav && toggle) {
+      toggle.addEventListener('click', () => {
+        const open = nav.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', String(open));
+      });
+
+      nav.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          nav.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    if (submenuHost && submenuToggle) {
+      submenuToggle.addEventListener('click', () => {
+        submenuHost.classList.toggle('is-open');
+        submenuToggle.setAttribute('aria-expanded', String(submenuHost.classList.contains('is-open')));
+      });
+    }
+  });
+</script>
