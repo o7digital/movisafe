@@ -3,12 +3,16 @@ interface Props {
   title?: string;
   description?: string;
   lang?: 'es' | 'en' | 'fr';
+  siteUrl?: string;
+  canonical?: string;
 }
 
 const {
   title = 'Movisafe',
   description = 'Expertos en seguridad integral',
-  lang = 'es'
+  lang = 'es',
+  siteUrl = 'https://movisafe.com',
+  canonical = siteUrl
 } = Astro.props;
 ---
 
@@ -28,6 +32,20 @@ const {
       rel="stylesheet"
     />
     <title>{title}</title>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${siteUrl}/images/movisafe/capa.webp`} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${siteUrl}/images/movisafe/capa.webp`} />
+
+    <link rel="canonical" href={canonical} />
+
+    <link rel="alternate" hrefLang="es" href={`${siteUrl}/`} />
+    <link rel="alternate" hrefLang="en" href={`${siteUrl}/en/`} />
+    <link rel="alternate" hrefLang="fr" href={`${siteUrl}/fr/`} />
   </head>
   <body>
     <slot />
