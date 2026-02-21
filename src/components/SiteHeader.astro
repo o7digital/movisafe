@@ -7,6 +7,10 @@ interface Props {
 const { active = '', locale = 'es' } = Astro.props;
 const solutionActive = ['prevencion', 'proteccion', 'asesoriaycapacitacion'].includes(active);
 const basePath = locale === 'es' ? '' : `/${locale}`;
+const currentPath = Astro.url.pathname || '/';
+
+const pathWithoutLocale = currentPath.replace(/^\/(en|fr)(?=\/|$)/, '') || '/';
+const normalizedPath = pathWithoutLocale.endsWith('/') ? pathWithoutLocale : `${pathWithoutLocale}/`;
 
 const copy = {
   es: {
@@ -53,21 +57,9 @@ const copy = {
 const localizedHome = `${basePath}/`;
 const localHref = (path: string) => `${basePath}${path}`;
 
-const pagePathByActive: Record<string, string> = {
-  '': '/',
-  'quienes-somos': '/quienes-somos/',
-  nuestrosclientes: '/nuestrosclientes/',
-  prevencion: '/prevencion/',
-  proteccion: '/proteccion/',
-  asesoriaycapacitacion: '/asesoriaycapacitacion/',
-  'nuestro-equipo': '/nuestro-equipo/',
-  blog: '/blog/'
-};
-
-const activePath = pagePathByActive[active] ?? '/';
 const localizedPagePath = (targetLocale: 'es' | 'en' | 'fr') => {
   const prefix = targetLocale === 'es' ? '' : `/${targetLocale}`;
-  return `${prefix}${activePath}`;
+  return normalizedPath === '/' ? `${prefix}/` : `${prefix}${normalizedPath}`;
 };
 ---
 

@@ -16,5 +16,5 @@ const { title, description = 'Movisafe', active = '', locale = 'es' } = Astro.pr
 <Layout title={title} description={description} lang={locale}>
   <SiteHeader active={active} locale={locale} />
   <slot />
-  <SiteFooter active={active} locale={locale} />
+  <SiteFooter locale={locale} />
 </Layout>
