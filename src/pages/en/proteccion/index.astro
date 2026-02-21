@@ -1,0 +1,68 @@
+---
+import SitePage from '../../../layouts/SitePage.astro';
+import '../../../styles/inner-pages.css';
+
+const services = [
+  {
+    title: '24/7 immediate response center',
+    image: '/images/movisafe/pages/proteccion-4.webp',
+    description:
+      'Cross-functional service for real-time monitoring of security operations, GPS tracking, call-center support, and on-site emergency assistance for companies and collaborators.'
+  },
+  {
+    title: 'Security and crisis management',
+    image: '/images/movisafe/pages/proteccion3.webp',
+    description:
+      'Security audit and expert support during project or operational phases: zone assessment, due diligence, logistics chain recommendations, and on-site specialist assistance.'
+  },
+  {
+    title: 'Supply chain security',
+    image: '/images/movisafe/pages/proteccion-2.webp',
+    description:
+      'Route audits and cargo protection from ports, airports, or distribution centers to final delivery, with protocols adapted to risk level.'
+  },
+  {
+    title: 'Secure VIP transportation',
+    image: '/images/movisafe/pages/proteccion1.webp',
+    description:
+      'Tailored secure transportation service with coverage across multiple distances and territories, designed for executives, visitors, and sensitive operations.'
+  }
+];
+---
+
+<SitePage
+  title="Movisafe - Protection"
+  description="Movisafe protection solutions"
+  active="proteccion"
+  locale="en"
+>
+  <main class="page-main">
+    <section class="page-hero" style="background-image:url('/images/movisafe/shutterstock_639923053.webp')">
+      <div class="container">
+        <p class="page-hero-kicker">OUR SOLUTIONS IN</p>
+        <h1>PROTECTION</h1>
+        <div class="page-divider"></div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="container">
+        <p class="page-subtitle">
+          Protecting your assets prevents human and financial consequences, protects corporate reputation, and reduces
+          legal exposure. Movisafe supports you at every stage of your projects.
+        </p>
+        <div class="section-divider"></div>
+
+        <div class="cards-grid cards-grid--4">
+          {services.map((service) => (
+            <article class="feature-card">
+              <img src={service.image} alt={service.title} loading="lazy" style="width:72px;margin-bottom:0.8rem;" />
+              <h3>{service.title}</h3>
+              <p>{service.description}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+</SitePage>

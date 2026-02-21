@@ -7,13 +7,14 @@ interface Props {
   title: string;
   description?: string;
   active?: string;
+  locale?: 'es' | 'en' | 'fr';
 }
 
-const { title, description = 'Movisafe', active = '' } = Astro.props;
+const { title, description = 'Movisafe', active = '', locale = 'es' } = Astro.props;
 ---
 
-<Layout title={title} description={description}>
-  <SiteHeader active={active} />
+<Layout title={title} description={description} lang={locale}>
+  <SiteHeader active={active} locale={locale} />
   <slot />
-  <SiteFooter />
+  <SiteFooter active={active} locale={locale} />
 </Layout>

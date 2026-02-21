@@ -1,0 +1,62 @@
+---
+import SitePage from '../../../layouts/SitePage.astro';
+import '../../../styles/inner-pages.css';
+
+const services = [
+  {
+    title: 'Intelligence securitaire business',
+    image: '/images/movisafe/pages/prevencion3.webp',
+    description:
+      'Pour directeurs de projet, investisseurs et responsables securite. Informations en temps reel sur les conditions par pays, etat, ville ou region, avec rapports periodiques et tendances pour la prise de decision risque.'
+  },
+  {
+    title: 'Conseil personnel aux expatries',
+    image: '/images/movisafe/pages/prevencion2.webp',
+    description:
+      "Accompagnement personnalise pour expatries: briefing a l'arrivee, sensibilisation aux habitudes locales, aide au choix du domicile et assistance telephonique 24h/24 avec intervention a Mexico, Queretaro et Celaya."
+  },
+  {
+    title: 'Etude de personnel',
+    image: '/images/movisafe/pages/prevencion1.webp',
+    description:
+      'Evaluation complete pour RH et securite: tests psychometriques et antidopage, verification professionnelle, etudes socioeconomiques et controle des antecedents judiciaires.'
+  }
+];
+---
+
+<SitePage
+  title="Movisafe - Prevention"
+  description="Solutions Movisafe en prevention"
+  active="prevencion"
+  locale="fr"
+>
+  <main class="page-main">
+    <section class="page-hero" style="background-image:url('/images/movisafe/pages/prevencionslider.webp')">
+      <div class="container">
+        <p class="page-hero-kicker">NOS SOLUTIONS EN</p>
+        <h1>PREVENTION</h1>
+        <div class="page-divider"></div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="container">
+        <p class="page-subtitle">
+          Anticiper est essentiel. La securite de vos collaborateurs et de vos actifs exige une preparation continue,
+          et Movisafe propose des solutions preventives pour les risques operationnels et humains.
+        </p>
+        <div class="section-divider"></div>
+
+        <div class="cards-grid">
+          {services.map((service) => (
+            <article class="feature-card">
+              <img src={service.image} alt={service.title} loading="lazy" style="width:72px;margin-bottom:0.8rem;" />
+              <h3>{service.title}</h3>
+              <p>{service.description}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+</SitePage>

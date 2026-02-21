@@ -1,0 +1,62 @@
+---
+import SitePage from '../../../layouts/SitePage.astro';
+import '../../../styles/inner-pages.css';
+
+const services = [
+  {
+    title: 'Business security intelligence',
+    image: '/images/movisafe/pages/prevencion3.webp',
+    description:
+      'For project directors, investors, and security leaders. Real-time information on country, state, city, or regional conditions, with periodic reports and trends to support risk decisions.'
+  },
+  {
+    title: 'Personal advisory for expatriates',
+    image: '/images/movisafe/pages/prevencion2.webp',
+    description:
+      'Tailored support for expatriates: arrival briefing, local habit awareness, housing selection assistance, and 24/7 phone support with on-site intervention in Mexico, Queretaro, and Celaya.'
+  },
+  {
+    title: 'Personnel screening',
+    image: '/images/movisafe/pages/prevencion1.webp',
+    description:
+      'Comprehensive evaluation for HR and security: psychometric and anti-doping tests, employment verification, socioeconomic studies, and criminal background checks.'
+  }
+];
+---
+
+<SitePage
+  title="Movisafe - Prevention"
+  description="Movisafe prevention solutions"
+  active="prevencion"
+  locale="en"
+>
+  <main class="page-main">
+    <section class="page-hero" style="background-image:url('/images/movisafe/pages/prevencionslider.webp')">
+      <div class="container">
+        <p class="page-hero-kicker">OUR SOLUTIONS IN</p>
+        <h1>PREVENTION</h1>
+        <div class="page-divider"></div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="container">
+        <p class="page-subtitle">
+          Anticipation is key. Protecting your teams and assets requires continuous readiness, so Movisafe delivers
+          preventive solutions for operational and human risks.
+        </p>
+        <div class="section-divider"></div>
+
+        <div class="cards-grid">
+          {services.map((service) => (
+            <article class="feature-card">
+              <img src={service.image} alt={service.title} loading="lazy" style="width:72px;margin-bottom:0.8rem;" />
+              <h3>{service.title}</h3>
+              <p>{service.description}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+</SitePage>

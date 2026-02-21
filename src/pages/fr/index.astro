@@ -1,47 +1,47 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '../../layouts/Layout.astro';
 
 const slides = [
   {
-    title: 'PREVENCION',
-    message: 'LA INTEGRIDAD DE SUS EQUIPOS Y BIENES ES NUESTRA PRIORIDAD',
+    title: 'PREVENTION',
+    message: 'L INTEGRITE DE VOS EQUIPES ET BIENS EST NOTRE PRIORITE',
     image: '/images/movisafe/unoMOVISAFE.webp'
   },
   {
-    title: 'PROTECCION',
-    message: 'LA INTEGRIDAD DE SUS EQUIPOS Y BIENES ES NUESTRA PRIORIDAD',
+    title: 'PROTECTION',
+    message: 'L INTEGRITE DE VOS EQUIPES ET BIENS EST NOTRE PRIORITE',
     image: '/images/movisafe/dos.webp'
   },
   {
-    title: 'ASESORIA Y CAPACITACION',
-    message: 'LA INTEGRIDAD DE SUS EQUIPOS Y BIENES ES NUESTRA PRIORIDAD',
+    title: 'CONSEIL ET FORMATION',
+    message: 'L INTEGRITE DE VOS EQUIPES ET BIENS EST NOTRE PRIORITE',
     image: '/images/movisafe/tres.webp'
   }
 ];
 
 const navLinks = [
-  { label: 'Quienes Somos', href: '/quienes-somos/' },
-  { label: 'Nuestros Clientes', href: '/nuestrosclientes/' },
-  { label: 'Nuestras Soluciones', href: '/prevencion/' },
-  { label: 'Unase a nuestro equipo', href: '/nuestro-equipo/' },
-  { label: 'Noticias', href: '/blog/' }
+  { label: 'Qui Sommes-Nous', href: '/fr/quienes-somos/' },
+  { label: 'Nos Clients', href: '/fr/nuestrosclientes/' },
+  { label: 'Nos Solutions', href: '/fr/prevencion/' },
+  { label: 'Rejoignez notre equipe', href: '/fr/nuestro-equipo/' },
+  { label: 'Actualites', href: '/fr/blog/' }
 ];
 
 const stats = [
   {
     icon: '/images/movisafe/ICONOS_Mesa-de-trabajo-1-rj1655tpr0oh6hhnd3vn1gqlv8lmao3tvo9dyja4g0.webp',
     value: '+ 100',
-    label: 'Clientes atendidos'
+    label: 'Clients servis'
   },
   {
     icon: '/images/movisafe/ICONOS-02-rj165v7cvjn7vygs8wukesc1wn4j2hwkz5vhx08hs0.webp',
     value: '+ 800',
-    label: 'Misiones'
+    label: 'Missions'
   },
   {
     icon: '/images/movisafe/ICONOS-03-rj165f83nd1cel3zu7xwqed7t3bafn558ys8raw6ps.webp',
     value: '5',
-    label: 'Oficinas en el mundo'
+    label: 'Bureaux dans le monde'
   }
 ];
 
@@ -55,59 +55,59 @@ const solutions = [
   {
     title: 'Prevencion',
     image: '/images/movisafe/shutterstock_669226189.webp',
-    href: '/prevencion/'
+    href: '/fr/prevencion/'
   },
   {
     title: 'Proteccion',
     image: '/images/movisafe/shutterstock_639923053.webp',
-    href: '/proteccion/'
+    href: '/fr/proteccion/'
   },
   {
     title: 'Asesoria y Capacitacion',
     image: '/images/movisafe/soluciones-03.webp',
-    href: '/asesoriaycapacitacion/'
+    href: '/fr/asesoriaycapacitacion/'
   }
 ];
 
 const commitments = [
   {
-    title: 'Permiso SSP y Federal',
+    title: 'Autorisation SSP et Federale',
     description: 'Federal: DGSP/136-08/1133 | Estado de Mexico: CES/280/13-09/III-SP'
   },
   {
-    title: 'Prevencion, proteccion y asesoria',
-    description: 'Expertos en seguridad para su empresa y sus colaboradores las 24 horas 365 dias del ano.'
+    title: 'Prevention, protection et conseil',
+    description: 'Experts en securite pour votre entreprise et vos collaborateurs 24h/24, 365 jours par an.'
   },
   {
-    title: 'Nuestros valores',
+    title: 'Nos valeurs',
     description:
-      'Confidencialidad, reactividad, transparencia, honestidad, altos estandares de calidad y conviccion de que cada cliente es unico.'
+      'Confidentialite, reactivite, transparence, honnetete, standards eleves de qualite et conviction que chaque client est unique.'
   }
 ];
 ---
 
-<Layout title="Movisafe - Expertos en seguridad integral" description="Clon del home de Movisafe en Astro">
+<Layout title="Movisafe - Experts en securite integrale" description="Clone de la homepage Movisafe en Astro" lang="fr">
   <header class="site-header" id="top">
     <div class="container nav-wrap">
-      <a class="brand" href="#top" aria-label="Movisafe inicio">
+      <a class="brand" href="#top" aria-label="Accueil Movisafe">
         <img src="/images/movisafe/Movisafe-logo-1000x348-v1.0.svg" alt="Movisafe" />
       </a>
 
-      <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-nav">
+      <button class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="primary-nav">
         <span></span>
         <span></span>
         <span></span>
       </button>
 
-      <nav id="primary-nav" class="primary-nav" aria-label="Navegacion principal">
+      <nav id="primary-nav" class="primary-nav" aria-label="Navigation principale">
         <ul>
           {navLinks.map((link) => (
             <li><a href={link.href}>{link.label}</a></li>
           ))}
           <li class="lang-switch">
-            <a class="is-current" href="/">ESP</a>
+            <a href="/">ESP</a>
             <a href="/en/">EN</a>
-            <a href="/fr/">FR</a>
+            <a class="is-current" href="/fr/">FR</a>
           </li>
         </ul>
       </nav>
@@ -115,7 +115,7 @@ const commitments = [
   </header>
 
   <main>
-    <section class="hero" aria-label="Portada de servicios">
+    <section class="hero" aria-label="Vitrine des services">
       <div class="hero-track">
         {slides.map((slide, index) => (
           <article
@@ -152,8 +152,8 @@ const commitments = [
     <section id="quienes" class="section about">
       <div class="container about-grid">
         <div class="about-content">
-          <p class="eyebrow">QUIENES SOMOS</p>
-          <h1>EXPERTOS EN SEGURIDAD INTEGRAL</h1>
+          <p class="eyebrow">QUI SOMMES-NOUS</p>
+          <h1>EXPERTS EN SECURITE INTEGRALE</h1>
           <div class="divider"></div>
 
           <div class="stats-grid">
@@ -166,14 +166,14 @@ const commitments = [
             ))}
           </div>
 
-          <a class="btn btn-red" href="/quienes-somos/">SABER MAS</a>
+          <a class="btn btn-red" href="/fr/quienes-somos/">EN SAVOIR PLUS</a>
         </div>
 
         <div class="about-media">
           <img src="/images/movisafe/exp_esp.webp" alt="Experiencia Movisafe" loading="lazy" />
           <div class="experience-badge">
             <span>22</span>
-            <small>ANOS DE EXPERIENCIA</small>
+            <small>ANS D EXPERIENCE</small>
           </div>
         </div>
       </div>
@@ -181,24 +181,24 @@ const commitments = [
 
     <section id="clientes" class="section clients">
       <div class="container center-content">
-        <h2>Nuestros Clientes</h2>
+        <h2>Nos Clients</h2>
         <div class="divider"></div>
 
         <div class="client-logos" role="list">
           {clients.map((logo) => (
             <figure role="listitem">
-              <img src={logo} alt="Logo cliente" loading="lazy" />
+              <img src={logo} alt="Logo client" loading="lazy" />
             </figure>
           ))}
         </div>
 
-        <a class="btn btn-red" href="/nuestrosclientes/">SABER MAS</a>
+        <a class="btn btn-red" href="/fr/nuestrosclientes/">EN SAVOIR PLUS</a>
       </div>
     </section>
 
     <section id="soluciones" class="section solutions">
       <div class="container center-content">
-        <h2>Nuestras Soluciones</h2>
+        <h2>Nos Solutions</h2>
         <div class="divider divider-light"></div>
 
         <div class="solutions-grid">
@@ -215,7 +215,7 @@ const commitments = [
 
     <section class="section commitment">
       <div class="container center-content">
-        <h2>Nuestro compromiso</h2>
+        <h2>Notre engagement</h2>
         <div class="divider"></div>
 
         <div class="commitment-grid">
@@ -250,30 +250,30 @@ const commitments = [
       <div class="contact-overlay"></div>
       <div class="container contact-grid">
         <div class="contact-form-wrap">
-          <p class="eyebrow light">CONTACTENOS</p>
-          <h2>Deje sus datos y nosotros le contactaremos</h2>
+          <p class="eyebrow light">CONTACTEZ-NOUS</p>
+          <h2>Laissez vos coordonnees et nous vous contacterons</h2>
           <div class="divider divider-light"></div>
 
           <form class="contact-form" action="#" method="post">
             <label>
-              Nombre completo
-              <input type="text" name="name" placeholder="Nombre completo" />
+              Nom complet
+              <input type="text" name="name" placeholder="Nom complet" />
             </label>
             <div class="form-row">
               <label>
-                Correo
-                <input type="email" name="email" placeholder="Correo" required />
+                Email
+                <input type="email" name="email" placeholder="Email" required />
               </label>
               <label>
-                Telefono
-                <input type="tel" name="phone" placeholder="Telefono" required />
+                Telephone
+                <input type="tel" name="phone" placeholder="Telephone" required />
               </label>
             </div>
             <label>
-              Mensaje
-              <textarea name="message" rows="4" placeholder="Mensaje"></textarea>
+              Message
+              <textarea name="message" rows="4" placeholder="Message"></textarea>
             </label>
-            <button class="btn btn-red" type="submit">Enviar</button>
+            <button class="btn btn-red" type="submit">Envoyer</button>
           </form>
         </div>
 
@@ -285,8 +285,8 @@ const commitments = [
             Col. Los Pirules, CP 54040,<br />
             Tlalnepantla de Baz, Edo. de Mexico
           </p>
-          <p>Lunes a Viernes<br />9:00 hrs - 18:00 hrs</p>
-          <p><a href="https://movisafe.com/aviso-de-privacidad/" target="_blank" rel="noopener">Aviso de Privacidad</a></p>
+          <p>Lundi a Vendredi<br />9:00 hrs - 18:00 hrs</p>
+          <p><a href="https://movisafe.com/aviso-de-privacidad/" target="_blank" rel="noopener">Politique de confidentialite</a></p>
         </aside>
       </div>
     </section>
@@ -294,15 +294,15 @@ const commitments = [
 
   <footer class="site-footer" id="footer-links">
     <div class="container footer-links">
-      <a href="/quienes-somos/">Quienes Somos</a>
-      <a href="/nuestrosclientes/">Nuestros Clientes</a>
-      <a href="/prevencion/">Nuestras Soluciones</a>
-      <a href="/nuestro-equipo/">Unase a nuestro equipo</a>
-      <a href="/blog/">Noticias</a>
+      <a href="/fr/quienes-somos/">Qui Sommes-Nous</a>
+      <a href="/fr/nuestrosclientes/">Nos Clients</a>
+      <a href="/fr/prevencion/">Nos Solutions</a>
+      <a href="/fr/nuestro-equipo/">Rejoignez notre equipe</a>
+      <a href="/fr/blog/">Actualites</a>
       <span class="lang-switch footer-lang-switch">
-        <a class="is-current" href="/">ESP</a>
+        <a href="/">ESP</a>
         <a href="/en/">EN</a>
-        <a href="/fr/">FR</a>
+        <a class="is-current" href="/fr/">FR</a>
       </span>
     </div>
   </footer>

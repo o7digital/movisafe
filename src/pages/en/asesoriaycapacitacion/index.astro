@@ -1,0 +1,64 @@
+---
+import SitePage from '../../../layouts/SitePage.astro';
+import '../../../styles/inner-pages.css';
+
+const services = [
+  {
+    title: 'Training',
+    description:
+      'Partnerships with trainers officially registered with STPS in security and civil protection. Includes defensive and anti-kidnapping evasive driving, executive protection, tactical armored driving, and crisis management awareness.'
+  },
+  {
+    title: 'Risk prevention course',
+    description:
+      'For site directors, HR leaders, and security teams. Programs focused on understanding Mexico security context, crisis management, briefings, and strengthening internal capabilities.'
+  }
+];
+---
+
+<SitePage
+  title="Movisafe - Advisory and Training"
+  description="Movisafe advisory and training solutions"
+  active="asesoriaycapacitacion"
+  locale="en"
+>
+  <main class="page-main">
+    <section class="page-hero" style="background-image:url('/images/movisafe/soluciones-03.webp')">
+      <div class="container">
+        <p class="page-hero-kicker">OUR SOLUTIONS IN</p>
+        <h1>ADVISORY AND TRAINING</h1>
+        <div class="page-divider"></div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="container">
+        <p class="page-subtitle">
+          It is critical for teams to build strong security habits and update practices against current threats.
+          Movisafe provides expert support for continuous improvement processes.
+        </p>
+        <div class="section-divider"></div>
+
+        <div class="cards-grid cards-grid--2">
+          <article class="feature-card">
+            <img src="/images/movisafe/Recurso-1.webp" alt="Advisory" loading="lazy" />
+          </article>
+          <article class="feature-card">
+            <img src="/images/movisafe/pages/cursos.webp" alt="Training" loading="lazy" />
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section page-section--alt">
+      <div class="container cards-grid cards-grid--2">
+        {services.map((service) => (
+          <article class="feature-card">
+            <h3>{service.title}</h3>
+            <p>{service.description}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  </main>
+</SitePage>

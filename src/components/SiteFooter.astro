@@ -1,11 +1,68 @@
+---
+interface Props {
+  active?: string;
+  locale?: 'es' | 'en' | 'fr';
+}
+
+const { active = '', locale = 'es' } = Astro.props;
+const basePath = locale === 'es' ? '' : `/${locale}`;
+
+const copy = {
+  es: {
+    who: 'quienes somos',
+    clients: 'nuestros clientes',
+    solutions: 'nuestras soluciones',
+    team: 'unase a nuestro equipo',
+    news: 'noticias'
+  },
+  en: {
+    who: 'who we are',
+    clients: 'our clients',
+    solutions: 'our solutions',
+    team: 'join our team',
+    news: 'news'
+  },
+  fr: {
+    who: 'qui sommes-nous',
+    clients: 'nos clients',
+    solutions: 'nos solutions',
+    team: 'rejoignez notre equipe',
+    news: 'actualites'
+  }
+}[locale];
+
+const localHref = (path: string) => `${basePath}${path}`;
+
+const pagePathByActive: Record<string, string> = {
+  '': '/',
+  'quienes-somos': '/quienes-somos/',
+  nuestrosclientes: '/nuestrosclientes/',
+  prevencion: '/prevencion/',
+  proteccion: '/proteccion/',
+  asesoriaycapacitacion: '/asesoriaycapacitacion/',
+  'nuestro-equipo': '/nuestro-equipo/',
+  blog: '/blog/'
+};
+
+const activePath = pagePathByActive[active] ?? '/';
+const localizedPagePath = (targetLocale: 'es' | 'en' | 'fr') => {
+  const prefix = targetLocale === 'es' ? '' : `/${targetLocale}`;
+  return `${prefix}${activePath}`;
+};
+---
+
 <footer class="site-footer site-footer--shared" id="footer-links">
   <div class="container footer-links">
-    <a href="/quienes-somos/">Quienes Somos</a>
-    <a href="/nuestrosclientes/">Nuestros Clientes</a>
-    <a href="/prevencion/">Nuestras Soluciones</a>
-    <a href="/nuestro-equipo/">Unase a nuestro equipo</a>
-    <a href="/blog/">Noticias</a>
-    <a href="#">ESP</a>
+    <a href={localHref('/quienes-somos/')}>{copy.who}</a>
+    <a href={localHref('/nuestrosclientes/')}>{copy.clients}</a>
+    <a href={localHref('/prevencion/')}>{copy.solutions}</a>
+    <a href={localHref('/nuestro-equipo/')}>{copy.team}</a>
+    <a href={localHref('/blog/')}>{copy.news}</a>
+    <span class="lang-switch" aria-label="Language selector">
+      <a class={locale === 'es' ? 'is-current' : ''} href={localizedPagePath('es')}>ESP</a>
+      <a class={locale === 'en' ? 'is-current' : ''} href={localizedPagePath('en')}>EN</a>
+      <a class={locale === 'fr' ? 'is-current' : ''} href={localizedPagePath('fr')}>FR</a>
+    </span>
   </div>
 </footer>
 
@@ -20,13 +77,35 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
     gap: 0.86rem;
   }
 
-  .site-footer--shared .footer-links a {
+  .site-footer--shared .footer-links > a {
     font-size: 0.63rem;
     color: #d07183;
     text-transform: lowercase;
     text-decoration: none;
+  }
+
+  .site-footer--shared .lang-switch {
+    display: inline-flex;
+    gap: 0.3rem;
+  }
+
+  .site-footer--shared .lang-switch a {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    color: #8b3b48;
+    border: 1px solid #d8b0b7;
+    border-radius: 999px;
+    padding: 0.12rem 0.45rem;
+    text-decoration: none;
+  }
+
+  .site-footer--shared .lang-switch a.is-current {
+    color: #ffffff;
+    border-color: #8b3b48;
+    background: #8b3b48;
   }
 </style>

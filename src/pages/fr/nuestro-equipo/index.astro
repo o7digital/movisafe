@@ -1,0 +1,45 @@
+---
+import SitePage from '../../../layouts/SitePage.astro';
+import '../../../styles/inner-pages.css';
+---
+
+<SitePage
+  title="Movisafe - Rejoignez Notre Equipe"
+  description="Formulaire pour rejoindre l'equipe Movisafe"
+  active="nuestro-equipo"
+  locale="fr"
+>
+  <main class="page-main">
+    <section class="page-hero" style="background-image:url('/images/movisafe/pages/manos.webp');min-height:440px;">
+      <div class="container">
+        <p class="page-hero-kicker">CONTACT</p>
+        <h1>REJOIGNEZ NOTRE EQUIPE</h1>
+        <div class="page-divider"></div>
+        <p class="page-subtitle" style="color:#fff;max-width:620px;">
+          Laissez vos coordonnees et nous vous contacterons pour vous donner plus d'informations.
+        </p>
+      </div>
+    </section>
+
+    <section class="page-section page-section--alt">
+      <div class="container">
+        <div class="dark-panel">
+          <form class="form-grid" action="#" method="post">
+            <div class="form-row">
+              <input type="text" name="nombre" placeholder="Nom complet" required />
+              <input type="email" name="email" placeholder="Email" required />
+            </div>
+            <div class="form-row">
+              <input type="tel" name="telefono" placeholder="Telephone" required />
+              <input type="text" name="puesto" placeholder="Poste souhaite" />
+            </div>
+            <textarea name="mensaje" rows="5" placeholder="Message"></textarea>
+            <div>
+              <button class="btn-primary" type="submit">Envoyer</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+</SitePage>
