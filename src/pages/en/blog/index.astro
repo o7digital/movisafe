@@ -8,71 +8,62 @@ const posts = [
     date: '23 October, 2020',
     excerpt:
       'Why security information matters for business and leisure travel, with practical recommendations to reduce exposure to incidents.',
-    image: '/images/movisafe/pages/viajeros-informacion-300x300.webp',
-    href: 'https://movisafe.com/2020/10/medidas-de-seguridad-ante-un-viaje/'
+    image: '/images/movisafe/pages/viajeros-informacion-300x300.webp'
   },
   {
     title: 'Phishing as a fraud method',
     date: '20 October, 2020',
     excerpt:
       'How digital fraud evolves and which preventive controls organizations and individuals should implement.',
-    image: '/images/movisafe/pages/phishing-mexico-300x300.webp',
-    href: 'https://movisafe.com/2020/10/el-phishing-como-modalidad-de-fraude/'
+    image: '/images/movisafe/pages/phishing-mexico-300x300.webp'
   },
   {
     title: 'Toll booth takeovers: between protest and business',
     date: '16 October, 2020',
     excerpt:
       'An analysis of a phenomenon impacting mobility and logistics, and its link with operational security in Mexico.',
-    image: '/images/movisafe/pages/casetas-mexico-300x300.webp',
-    href: 'https://movisafe.com/2020/10/toma-de-casetas-entre-la-protesta-y-el-negocios/'
+    image: '/images/movisafe/pages/casetas-mexico-300x300.webp'
   },
   {
     title: 'The boss call and yellow-envelope scams',
     date: '13 October, 2020',
     excerpt:
       'A review of phone scam patterns and response recommendations for administrative and executive teams.',
-    image: '/images/movisafe/pages/llamadas-fraudes-300x300.webp',
-    href: 'https://movisafe.com/2020/10/la-patrona-o-el-sobre-amarillo-los-fraudes-al-acecho/'
+    image: '/images/movisafe/pages/llamadas-fraudes-300x300.webp'
   },
   {
     title: 'Skimming and bank data theft',
     date: '9 October, 2020',
     excerpt:
       'Skimming-related risks and basic controls to protect payment methods and banking information.',
-    image: '/images/movisafe/pages/fraude-skimming-300x300.webp',
-    href: 'https://movisafe.com/2020/10/skimming-robo-de-informacion-bancaria/'
+    image: '/images/movisafe/pages/fraude-skimming-300x300.webp'
   },
   {
     title: 'Crash scams: extortion disguised as accidents',
     date: '6 October, 2020',
     excerpt:
       'Overview of crash-scam tactics and recommended actions for individuals and companies.',
-    image: '/images/movisafe/pages/montachoques-zmvm-300x300.webp',
-    href: 'https://movisafe.com/2020/10/montachoques-la-extorsion-disfrazada-de-accidente/'
+    image: '/images/movisafe/pages/montachoques-zmvm-300x300.webp'
   },
   {
     title: 'Interrupted routes',
     date: '2 October, 2020',
     excerpt: 'The impact of blockades and disruptions on business continuity and supply chain operations.',
-    image: '/images/movisafe/pages/vias-tren-300x300.webp',
-    href: 'https://movisafe.com/2020/10/las-vias-interrumpidas/'
+    image: '/images/movisafe/pages/vias-tren-300x300.webp'
   },
   {
     title: 'Vishing: the technological evolution of fraud',
     date: '29 September, 2020',
     excerpt:
       'How vishing works and which minimum controls help mitigate social engineering attempts.',
-    image: '/images/movisafe/pages/vishing-mexico-300x300.webp',
-    href: 'https://movisafe.com/2020/09/vishing-la-revolucion-tecnologica-del-fraude/'
+    image: '/images/movisafe/pages/vishing-mexico-300x300.webp'
   },
   {
     title: 'National security challenges during the pandemic',
     date: '25 September, 2020',
     excerpt:
       'A perspective on security priorities and risks in a complex health, economic, and social context.',
-    image: '/images/movisafe/pages/blog_abril_01_insegurdiad_mexico_durante_pandemia-300x300.webp',
-    href: 'https://movisafe.com/2020/09/retos-para-la-seguridad-nacional-mexicana-en-la-epoca-de-la-pandemia/'
+    image: '/images/movisafe/pages/blog_abril_01_insegurdiad_mexico_durante_pandemia-300x300.webp'
   }
 ];
 
@@ -94,16 +85,11 @@ const popular = posts.slice(0, 5);
         <div class="blog-grid">
           {posts.map((post) => (
             <article class="post-card">
-              <a href={post.href} target="_blank" rel="noopener">
-                <img src={post.image} alt={post.title} loading="lazy" />
-              </a>
+              <img src={post.image} alt={post.title} loading="lazy" />
               <div class="post-body">
-                <h2 class="post-title">
-                  <a href={post.href} target="_blank" rel="noopener">{post.title}</a>
-                </h2>
+                <h2 class="post-title">{post.title}</h2>
                 <p class="post-meta">{post.date} • No Comments</p>
                 <p class="post-excerpt">{post.excerpt}</p>
-                <a class="post-link" href={post.href} target="_blank" rel="noopener">Read more</a>
               </div>
             </article>
           ))}
@@ -113,9 +99,7 @@ const popular = posts.slice(0, 5);
           <h2>Most popular</h2>
           <ul>
             {popular.map((post) => (
-              <li>
-                <a href={post.href} target="_blank" rel="noopener">{post.title}</a>
-              </li>
+              <li>{post.title}</li>
             ))}
           </ul>
         </aside>
