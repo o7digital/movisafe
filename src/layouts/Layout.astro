@@ -43,9 +43,19 @@ const {
 
     <link rel="canonical" href={canonical} />
 
-    <link rel="alternate" hrefLang="es" href={`${siteUrl}/`} />
-    <link rel="alternate" hrefLang="en" href={`${siteUrl}/en/`} />
-    <link rel="alternate" hrefLang="fr" href={`${siteUrl}/fr/`} />
+    <link rel="alternate" hreflang="es" href={`${siteUrl}/`} />
+    <link rel="alternate" hreflang="en" href={`${siteUrl}/en/`} />
+    <link rel="alternate" hreflang="fr" href={`${siteUrl}/fr/`} />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VMQ2L9CEE6"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'G-VMQ2L9CEE6');
+    </script>
   </head>
   <body>
     <slot />
