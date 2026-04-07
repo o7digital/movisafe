@@ -1,0 +1,145 @@
+---
+interface Props {
+  locale?: 'es' | 'en' | 'fr';
+  pageKey?: 'home' | 'prevencion' | 'proteccion' | 'asesoriaycapacitacion';
+}
+
+const { locale = 'es', pageKey = 'home' } = Astro.props;
+
+const seoFooterKeywords = {
+  es: {
+    home: [
+      'seguridad integral CDMX México',
+      'empresa de seguridad integral CDMX México',
+      'servicios de seguridad integral CDMX México',
+      'seguridad corporativa CDMX México',
+      'consultoría en seguridad CDMX México'
+    ],
+    prevencion: [
+      'prevención de riesgos CDMX México',
+      'inteligencia de seguridad CDMX México',
+      'asesoría para expatriados CDMX México',
+      'estudio de personal CDMX México',
+      'análisis de riesgos CDMX México'
+    ],
+    proteccion: [
+      'protección ejecutiva CDMX México',
+      'seguridad logística CDMX México',
+      'transporte seguro VIP CDMX México',
+      'gestión de crisis CDMX México',
+      'servicios de protección ejecutiva CDMX México'
+    ],
+    asesoriaycapacitacion: [
+      'capacitación en seguridad CDMX México',
+      'asesoría en seguridad CDMX México',
+      'manejo defensivo CDMX México',
+      'protección civil CDMX México',
+      'capacitación corporativa en seguridad CDMX México'
+    ]
+  },
+
+  fr: {
+    home: [
+      'sécurité intégrale CDMX Mexico',
+      'entreprise de sécurité intégrale CDMX Mexico',
+      'services de sécurité intégrale CDMX Mexico',
+      'sécurité corporative CDMX Mexico',
+      'conseil en sécurité CDMX Mexico'
+    ],
+    prevencion: [
+      'prévention des risques CDMX Mexico',
+      'intelligence de sécurité CDMX Mexico',
+      'accompagnement pour expatriés CDMX Mexico',
+      'étude de personnel CDMX Mexico',
+      'analyse des risques CDMX Mexico'
+    ],
+    proteccion: [
+      'protection exécutive CDMX Mexico',
+      'sécurité logistique CDMX Mexico',
+      'transport sécurisé VIP CDMX Mexico',
+      'gestion de crise CDMX Mexico',
+      'services de protection exécutive CDMX Mexico'
+    ],
+    asesoriaycapacitacion: [
+      'formation en sécurité CDMX Mexico',
+      'conseil en sécurité CDMX Mexico',
+      'conduite défensive CDMX Mexico',
+      'protection civile CDMX Mexico',
+      'formation corporative en sécurité CDMX Mexico'
+    ]
+  },
+
+  en: {
+    home: [
+      'comprehensive security CDMX Mexico',
+      'comprehensive security company CDMX Mexico',
+      'comprehensive security services CDMX Mexico',
+      'corporate security CDMX Mexico',
+      'security consulting CDMX Mexico'
+    ],
+    prevencion: [
+      'risk prevention CDMX Mexico',
+      'security intelligence CDMX Mexico',
+      'expatriate security advisory CDMX Mexico',
+      'personnel screening CDMX Mexico',
+      'risk analysis CDMX Mexico'
+    ],
+    proteccion: [
+      'executive protection CDMX Mexico',
+      'logistics security CDMX Mexico',
+      'secure VIP transport CDMX Mexico',
+      'crisis management CDMX Mexico',
+      'executive protection services CDMX Mexico'
+    ],
+    asesoriaycapacitacion: [
+      'security training CDMX Mexico',
+      'security advisory CDMX Mexico',
+      'defensive driving training CDMX Mexico',
+      'civil protection CDMX Mexico',
+      'corporate security training CDMX Mexico'
+    ]
+  }
+} as const;
+
+const page = pageKey in seoFooterKeywords[locale] ? pageKey : 'home';
+const keywords = seoFooterKeywords[locale][page];
+
+const joinKeywords = (items: readonly string[], language: 'es' | 'en' | 'fr') => {
+  if (items.length <= 1) return items[0] ?? '';
+
+  const conjunction = language === 'fr' ? ' et ' : language === 'en' ? ', and ' : ' y ';
+
+  if (items.length === 2) {
+    return `${items[0]}${conjunction}${items[1]}`;
+  }
+
+  return `${items.slice(0, -1).join(', ')}${conjunction}${items.at(-1)}`;
+};
+
+const intro = {
+  es: 'Movisafe ofrece',
+  fr: 'Movisafe propose',
+  en: 'Movisafe provides'
+} as const;
+
+const sentence = `${intro[locale]} ${joinKeywords(keywords, locale)}.`;
+---
+
+<p class="seo-footer-text">{sentence}</p>
+
+<style>
+  .seo-footer-text {
+    width: 100%;
+    margin: 0 0 0.4rem;
+    font-size: 0.66rem;
+    line-height: 1.55;
+    text-align: center;
+    color: #6d7480;
+  }
+
+  @media (max-width: 720px) {
+    .seo-footer-text {
+      font-size: 0.62rem;
+    }
+  }
+</style>

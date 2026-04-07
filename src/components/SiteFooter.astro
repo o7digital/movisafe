@@ -1,4 +1,6 @@
 ---
+import SeoFooterText from './SeoFooterText.astro';
+
 interface Props {
   locale?: 'es' | 'en' | 'fr';
 }
@@ -40,10 +42,20 @@ const localizedPagePath = (targetLocale: 'es' | 'en' | 'fr') => {
   const prefix = targetLocale === 'es' ? '' : `/${targetLocale}`;
   return normalizedPath === '/' ? `${prefix}/` : `${prefix}${normalizedPath}`;
 };
+
+const pageKeyMap = {
+  '/': 'home',
+  '/prevencion/': 'prevencion',
+  '/proteccion/': 'proteccion',
+  '/asesoriaycapacitacion/': 'asesoriaycapacitacion'
+} as const;
+
+const pageKey = pageKeyMap[normalizedPath as keyof typeof pageKeyMap] ?? 'home';
 ---
 
 <footer class="site-footer site-footer--shared" id="footer-links">
   <div class="container footer-links">
+    <SeoFooterText locale={locale} pageKey={pageKey} />
     <a href={localHref('/quienes-somos/')}>{copy.who}</a>
     <a href={localHref('/nuestrosclientes/')}>{copy.clients}</a>
     <a href={localHref('/prevencion/')}>{copy.solutions}</a>
@@ -69,6 +81,7 @@ const localizedPagePath = (targetLocale: 'es' | 'en' | 'fr') => {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    align-content: center;
     gap: 0.86rem;
   }
 

@@ -1,4 +1,5 @@
 ---
+import SeoFooterText from '../components/SeoFooterText.astro';
 import Layout from '../layouts/Layout.astro';
 
 const slides = [
@@ -305,6 +306,7 @@ const commitments = [
 
   <footer class="site-footer" id="footer-links">
     <div class="container footer-links">
+      <SeoFooterText locale="es" pageKey="home" />
       <a href="/quienes-somos/">Quienes Somos</a>
       <a href="/nuestrosclientes/">Nuestros Clientes</a>
       <a href="/prevencion/">Nuestras Soluciones</a>
