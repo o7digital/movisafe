@@ -1,0 +1,77 @@
+---
+import SitePage from '../../../src/layouts/SitePage.astro';
+import '../../../src/styles/inner-pages.css';
+---
+
+<SitePage
+  title="Movisafe - Aviso de Privacidad"
+  description="Aviso de privacidad de Movisafe para clientes, prospectos y usuarios del sitio web."
+>
+  <main class="page-main">
+    <section class="page-hero" style="background-image:linear-gradient(180deg, #152342, #001d3f)">
+      <div class="container">
+        <p class="page-hero-kicker">Legal</p>
+        <h1>Aviso de Privacidad</h1>
+        <div class="page-divider"></div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="container privacy-content">
+        <h2 class="page-title">Proteccion de datos personales</h2>
+        <p class="page-subtitle">
+          En Movisafe tratamos la informacion personal de clientes, prospectos y usuarios del sitio
+          con fines de contacto comercial, seguimiento de solicitudes y prestacion de servicios.
+        </p>
+        <div class="section-divider"></div>
+
+        <div class="text-block">
+          <p>
+            Los datos que usted proporcione a traves de formularios, correo electronico o contacto
+            telefonico podran incluir nombre, empresa, correo, telefono y la informacion necesaria
+            para atender su solicitud.
+          </p>
+          <p>
+            Utilizamos esta informacion para responder mensajes, elaborar propuestas, dar
+            seguimiento comercial y mantener comunicacion relacionada con los servicios de seguridad,
+            prevencion, proteccion, asesoria y capacitacion ofrecidos por Movisafe.
+          </p>
+          <p>
+            Movisafe implementa medidas razonables de seguridad administrativas, tecnicas y
+            operativas para proteger los datos personales contra dano, perdida, alteracion,
+            destruccion o uso no autorizado.
+          </p>
+          <p>
+            Si desea ejercer derechos de acceso, rectificacion, cancelacion u oposicion, o si desea
+            obtener informacion adicional sobre el tratamiento de sus datos, puede escribir a
+            <a href="mailto:contacto@oliviers49.sg-host.com">contacto@oliviers49.sg-host.com</a> o
+            comunicarse a los telefonos (55) 5576 9027 y (55) 8934 9750.
+          </p>
+          <p>
+            Domicilio de contacto: Boulevard de Popocatepetl 285, Col. Los Pirules, CP 54040,
+            Tlalnepantla de Baz, Estado de Mexico.
+          </p>
+          <p>
+            Este aviso puede actualizarse en cualquier momento para reflejar cambios operativos,
+            legales o de servicio. Cualquier actualizacion sera publicada en esta misma pagina.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+</SitePage>
+
+<style>
+  .privacy-content {
+    max-width: 860px;
+  }
+
+  .privacy-content a {
+    color: var(--mv-red);
+    text-decoration: underline;
+  }
+  
+  .privacy-content .text-block p + p {
+    margin-top: 1rem;
+  }
+</style>
