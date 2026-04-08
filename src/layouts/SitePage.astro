@@ -8,12 +8,13 @@ interface Props {
   description?: string;
   active?: string;
   locale?: 'es' | 'en' | 'fr';
+  availableLocales?: Array<'es' | 'en' | 'fr'>;
 }
 
-const { title, description = 'Movisafe', active = '', locale = 'es' } = Astro.props;
+const { title, description = 'Movisafe', active = '', locale = 'es', availableLocales } = Astro.props;
 ---
 
-<Layout title={title} description={description} lang={locale}>
+<Layout title={title} description={description} lang={locale} availableLocales={availableLocales}>
   <SiteHeader active={active} locale={locale} />
   <slot />
   <SiteFooter locale={locale} />

@@ -5,6 +5,7 @@ interface Props {
   lang?: 'es' | 'en' | 'fr';
   siteUrl?: string;
   canonical?: string;
+  availableLocales?: Array<'es' | 'en' | 'fr'>;
 }
 
 const {
@@ -12,8 +13,42 @@ const {
   description = 'Expertos en seguridad integral',
   lang = 'es',
   siteUrl = 'https://movisafe.com',
-  canonical = siteUrl
+  canonical,
+  availableLocales = ['es', 'en', 'fr']
 } = Astro.props;
+
+const normalizedSiteUrl = siteUrl.replace(/\/$/, '');
+const normalizedPathname = (() => {
+  const pathname = Astro.url.pathname || '/';
+  if (pathname === '/') return pathname;
+  return pathname.endsWith('/') ? pathname : `${pathname}/`;
+})();
+
+const stripLocalePrefix = (pathname: string) => {
+  const segments = pathname.split('/').filter(Boolean);
+  if (segments[0] === 'en' || segments[0] === 'fr') {
+    const rest = segments.slice(1).join('/');
+    return rest ? `/${rest}/` : '/';
+  }
+
+  return pathname;
+};
+
+const basePath = stripLocalePrefix(normalizedPathname);
+
+const localizedPath = (locale: 'es' | 'en' | 'fr') => {
+  if (basePath === '/') {
+    return locale === 'es' ? '/' : `/${locale}/`;
+  }
+
+  return locale === 'es' ? basePath : `/${locale}${basePath}`;
+};
+
+const resolvedCanonical = canonical ?? `${normalizedSiteUrl}${localizedPath(lang)}`;
+const alternateLinks = availableLocales.map((locale) => ({
+  locale,
+  href: `${normalizedSiteUrl}${localizedPath(locale)}`
+}));
 ---
 
 <!doctype html>
@@ -35,17 +70,19 @@ const {
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
+    <meta property="og:url" content={resolvedCanonical} />
     <meta property="og:image" content={`${siteUrl}/images/movisafe/capa.webp`} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={`${siteUrl}/images/movisafe/capa.webp`} />
 
-    <link rel="canonical" href={canonical} />
+    <link rel="canonical" href={resolvedCanonical} />
 
-    <link rel="alternate" hreflang="es" href={`${siteUrl}/`} />
-    <link rel="alternate" hreflang="en" href={`${siteUrl}/en/`} />
-    <link rel="alternate" hreflang="fr" href={`${siteUrl}/fr/`} />
+    {alternateLinks.map((link) => (
+      <link rel="alternate" hreflang={link.locale} href={link.href} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={`${normalizedSiteUrl}/`} />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VMQ2L9CEE6"></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
