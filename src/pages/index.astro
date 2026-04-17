@@ -183,6 +183,10 @@ const commitments = [
 
         <div class="about-media">
           <img src="/images/movisafe/exp_esp.webp" alt="Experiencia Movisafe" loading="lazy" />
+          <div class="experience-backdrop" aria-hidden="true">
+            <span>23</span>
+            <small>ANOS DE EXPERIENCIA</small>
+          </div>
           <div class="experience-badge">
             <span>23</span>
             <small>ANOS DE EXPERIENCIA</small>
@@ -669,6 +673,37 @@ const commitments = [
     margin-left: auto;
   }
 
+  .experience-backdrop {
+    position: absolute;
+    left: 7.2%;
+    bottom: 1.35rem;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 56%;
+    min-height: 9.8rem;
+    padding: 0.8rem 1rem;
+    border: 4px solid var(--mv-red);
+    background: rgb(7 20 45 / 0.38);
+  }
+
+  .experience-backdrop span {
+    font-size: 5.5rem;
+    line-height: 0.86;
+    font-weight: 900;
+    color: #2f3641;
+  }
+
+  .experience-backdrop small {
+    max-width: 140px;
+    font-size: 2rem;
+    line-height: 1.03;
+    font-weight: 700;
+    color: #ffffff;
+    text-transform: uppercase;
+  }
+
   .experience-badge {
     position: absolute;
     left: -0.8rem;
@@ -1059,6 +1094,20 @@ const commitments = [
 
     .experience-badge {
       left: 0;
+    }
+
+    .experience-backdrop {
+      left: 8%;
+      width: 58%;
+      min-height: 8.8rem;
+    }
+
+    .experience-backdrop span {
+      font-size: 4.8rem;
+    }
+
+    .experience-backdrop small {
+      font-size: 1.7rem;
     }
   }
 
