@@ -661,7 +661,20 @@ const commitments = [
     padding: 0.35rem 0;
   }
 
+  .about-media::after {
+    content: '';
+    position: absolute;
+    left: 4%;
+    bottom: 2%;
+    width: 42%;
+    height: 36%;
+    background: var(--mv-light);
+    z-index: 1;
+  }
+
   .about-media img {
+    position: relative;
+    z-index: 0;
     width: 100%;
     max-width: 490px;
     margin-left: auto;
@@ -671,6 +684,7 @@ const commitments = [
     position: absolute;
     left: -0.8rem;
     bottom: 1.2rem;
+    z-index: 2;
     display: flex;
     align-items: flex-end;
     gap: 0.55rem;
