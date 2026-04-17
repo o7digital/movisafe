@@ -184,7 +184,7 @@ const commitments = [
         <div class="about-media">
           <img src="/images/movisafe/exp_esp.webp" alt="Experiencia Movisafe" loading="lazy" />
           <div class="experience-badge">
-            <span>22</span>
+            <span>23</span>
             <small>YEARS OF EXPERIENCE</small>
           </div>
         </div>
@@ -662,6 +662,8 @@ const commitments = [
   }
 
   .about-media img {
+    position: relative;
+    z-index: 0;
     width: 100%;
     max-width: 490px;
     margin-left: auto;
@@ -671,6 +673,7 @@ const commitments = [
     position: absolute;
     left: -0.8rem;
     bottom: 1.2rem;
+    z-index: 2;
     display: flex;
     align-items: flex-end;
     gap: 0.55rem;
