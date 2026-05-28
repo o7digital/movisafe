@@ -49,6 +49,8 @@ const alternateLinks = availableLocales.map((locale) => ({
   locale,
   href: `${normalizedSiteUrl}${localizedPath(locale)}`
 }));
+
+import OliviaChat from '../components/OliviaChat.astro';
 ---
 
 <!doctype html>
@@ -96,6 +98,7 @@ const alternateLinks = availableLocales.map((locale) => ({
   </head>
   <body>
     <slot />
+    <OliviaChat />
   </body>
 </html>
 
