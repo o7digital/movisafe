@@ -1,1178 +1,1337 @@
 ---
-import SeoFooterText from '../components/SeoFooterText.astro';
 import Layout from '../layouts/Layout.astro';
 
-const slides = [
+const services = [
   {
-    title: 'PREVENCION',
-    message: 'LA INTEGRIDAD DE SUS EQUIPOS Y BIENES ES NUESTRA PRIORIDAD',
-    image: '/images/movisafe/unoMOVISAFE.webp'
+    kicker: 'Diagnostico',
+    title: 'Auditoria de Ciberseguridad',
+    text:
+      'Evaluacion profesional para identificar vulnerabilidades, validar controles actuales y documentar el nivel de exposicion ante phishing, ransomware, fuga de datos e interrupciones operativas.',
+    items: [
+      'Revision alineada a NIST CSF',
+      'Accesos, correo, red, endpoints y respaldos',
+      'Matriz de riesgos por impacto y urgencia',
+      'Informe ejecutivo para direccion'
+    ]
   },
   {
-    title: 'PROTECCION',
-    message: 'LA INTEGRIDAD DE SUS EQUIPOS Y BIENES ES NUESTRA PRIORIDAD',
-    image: '/images/movisafe/dos.webp'
-  },
-  {
-    title: 'ASESORIA Y CAPACITACION',
-    message: 'LA INTEGRIDAD DE SUS EQUIPOS Y BIENES ES NUESTRA PRIORIDAD',
-    image: '/images/movisafe/tres.webp'
+    kicker: 'Capacitacion',
+    title: 'Concienciacion Antiphishing',
+    text:
+      'Formacion para usuarios, mandos medios y equipos tecnicos con casos reales, sesiones practicas y materiales accionables para reducir el riesgo humano.',
+    items: [
+      'Phishing, contrasenas, MFA y manejo de informacion',
+      'Protocolos para reportar incidentes',
+      'Webinars ejecutivos y sesiones por area',
+      'Evidencia interna de sensibilizacion'
+    ]
   }
 ];
 
-const navLinks = [
-  { label: 'Quienes Somos', href: '/quienes-somos/' },
-  { label: 'Nuestros Clientes', href: '/nuestrosclientes/' },
-  { label: 'Nuestras Soluciones', href: '/prevencion/' },
-  { label: 'Unase a nuestro equipo', href: '/nuestro-equipo/' },
-  { label: 'Noticias', href: '/blog/' }
-];
-
-const stats = [
+const process = [
   {
-    icon: '/images/movisafe/ICONOS_Mesa-de-trabajo-1-rj1655tpr0oh6hhnd3vn1gqlv8lmao3tvo9dyja4g0.webp',
-    value: '+ 100',
-    label: 'Clientes atendidos'
+    num: '01',
+    title: 'Contexto del negocio',
+    text: 'Identificamos sistemas criticos, usuarios clave, sedes, proveedores, datos sensibles y escenarios de mayor impacto.'
   },
   {
-    icon: '/images/movisafe/ICONOS-02-rj165v7cvjn7vygs8wukesc1wn4j2hwkz5vhx08hs0.webp',
-    value: '+ 800',
-    label: 'Misiones'
+    num: '02',
+    title: 'Revision tecnica',
+    text: 'Validamos controles de identidad, correo, dispositivos, red, nube, respaldos, politicas y respuesta a incidentes.'
   },
   {
-    icon: '/images/movisafe/ICONOS-03-rj165f83nd1cel3zu7xwqed7t3bafn558ys8raw6ps.webp',
-    value: '5',
-    label: 'Oficinas en el mundo'
+    num: '03',
+    title: 'Riesgo ejecutivo',
+    text: 'Entregamos hallazgos priorizados, nivel de madurez, impacto probable y recomendaciones con responsables sugeridos.'
+  },
+  {
+    num: '04',
+    title: 'Plan 30 / 60 / 90',
+    text: 'Definimos acciones inmediatas, mejoras estructurales y capacitacion para reducir exposicion tecnica y riesgo humano.'
   }
 ];
 
-const clients = [
-  '/images/movisafe/clientes_movisafe-1-1-300x300.webp',
-  '/images/movisafe/clientes_movisafe-5-1-300x300.webp',
-  '/images/movisafe/clientes_movisafe-4-1-300x300.webp'
-];
-
-const solutions = [
+const training = [
   {
-    title: 'Prevencion',
-    image: '/images/movisafe/shutterstock_669226189.webp',
-    href: '/prevencion/'
+    tag: 'Conciencia cyber',
+    title: 'Phishing y fraude digital',
+    text: 'Correos falsos, enlaces maliciosos, suplantacion de identidad, ingenieria social y estafas por WhatsApp o llamadas.'
   },
   {
-    title: 'Proteccion',
-    image: '/images/movisafe/shutterstock_639923053.webp',
-    href: '/proteccion/'
+    tag: 'Accesos seguros',
+    title: 'Contrasenas, MFA y dispositivos',
+    text: 'Buenas practicas para proteger cuentas, usar autenticacion multifactor y asegurar laptops, moviles y accesos remotos.'
   },
   {
-    title: 'Asesoria y Capacitacion',
-    image: '/images/movisafe/soluciones-03.webp',
-    href: '/asesoriaycapacitacion/'
+    tag: 'Operacion segura',
+    title: 'Datos, ransomware e incidentes',
+    text: 'Manejo de informacion sensible, senales de ransomware, primeros pasos ante una sospecha y reporte oportuno.'
   }
 ];
 
-const commitments = [
+const plans = [
   {
-    title: 'Permiso SSP y Federal',
-    description: 'Federal: DGSP/136-08/1133 | Estado de Mexico: CES/280/13-09/III-SP'
+    title: 'Diagnostico Express',
+    text: 'Para empresas que quieren conocer rapidamente su exposicion.',
+    amount: '48h',
+    items: ['Entrevista inicial', 'Checklist NIST CSF', 'Reporte ejecutivo breve', 'Prioridades de mejora'],
+    featured: false,
+    cta: 'Cotizar'
   },
   {
-    title: 'Prevencion, proteccion y asesoria',
-    description: 'Expertos en seguridad para su empresa y sus colaboradores las 24 horas 365 dias del ano.'
+    title: 'Auditoria + Plan',
+    text: 'La oferta principal para convertir hallazgos en acciones.',
+    amount: '30/60/90',
+    items: ['Auditoria de controles', 'Matriz de riesgos', 'Roadmap de correccion', 'Sesion con direccion'],
+    featured: true,
+    cta: 'Oferta recomendada'
   },
   {
-    title: 'Nuestros valores',
-    description:
-      'Confidencialidad, reactividad, transparencia, honestidad, altos estandares de calidad y conviccion de que cada cliente es unico.'
+    title: 'Concienciacion Cyber',
+    text: 'Capacitacion continua para equipos y areas criticas.',
+    amount: 'Cursos',
+    items: ['Phishing e ingenieria social', 'MFA y accesos', 'Manejo seguro de datos', 'Reporte de incidentes'],
+    featured: false,
+    cta: 'Activar capacitacion'
   }
 ];
 ---
 
-<Layout title="Movisafe - Expertos en seguridad integral" description="Clon del home de Movisafe en Astro">
-  <header class="site-header" id="top">
-    <div class="container nav-wrap">
-      <a class="brand" href="#top" aria-label="Movisafe inicio">
-        <img src="/images/movisafe/Movisafe-logo-1000x348-v1.0.svg" alt="Movisafe" />
-      </a>
+<Layout
+  title="Movisafe Cyber - Auditoria de Ciberseguridad Empresarial en Mexico"
+  description="Landing Movisafe Cyber para auditoria de ciberseguridad, diagnostico NIST CSF, matriz de riesgos, plan 30/60/90 y capacitacion contra phishing y ransomware."
+>
+  <div class="landing-shell">
+    <div class="texture"></div>
+    <header class="topbar">
+      <div class="wrap nav">
+        <a class="brand" href="#top" aria-label="Movisafe Cyber">
+          <img src="/images/movisafe/Movisafe-logo-1000x348-v1.0.svg" alt="Movisafe" />
+          <span>Cyber</span>
+        </a>
+        <nav id="primary-navigation" class="navlinks" aria-label="Navegacion principal">
+          <a href="#servicios">Auditoria</a>
+          <a href="#proceso">Proceso</a>
+          <a href="#academia">Capacitacion</a>
+          <a href="#planes">Planes</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+        <a class="cta nav-cta" href="#contacto">Agendar diagnostico</a>
+        <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-controls="primary-navigation" aria-expanded="false">
+          <span></span>
+        </button>
+      </div>
+    </header>
 
-      <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-nav">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
-      <nav id="primary-nav" class="primary-nav" aria-label="Navegacion principal">
-        <ul>
-          {navLinks.map((link) => (
-            <li><a href={link.href}>{link.label}</a></li>
-          ))}
-          <li class="lang-switch lang-dropdown">
-            <button class="lang-trigger" type="button" aria-expanded="false" aria-haspopup="true">
-              ESP
-              <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false">
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-            </button>
-            <ul class="lang-menu" role="menu">
-              <li role="none"><a href="/en/" role="menuitem">EN</a></li>
-              <li role="none"><a href="/fr/" role="menuitem">FR</a></li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero" aria-label="Portada de servicios">
-      <div class="hero-track">
-        {slides.map((slide, index) => (
-          <article
-            class={`hero-slide ${index === 0 ? 'is-active' : ''}`}
-            data-slide
-            style={`background-image: url('${slide.image}')`}
-            aria-hidden={index === 0 ? 'false' : 'true'}
-          >
-            <div class="hero-overlay"></div>
-            <img class="hero-shape" src="/images/movisafe/capa.webp" alt="" aria-hidden="true" />
-            <div class="container hero-inner">
-              <div class="hero-copy">
-                <p class="hero-title">{slide.title}</p>
-                <p class="hero-message">{slide.message}</p>
-              </div>
+    <main id="top">
+      <section class="hero">
+        <div class="wrap hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow"><span></span> Division cyber de Movisafe</div>
+            <h1>Descubre tus riesgos digitales antes de que se conviertan en <strong>incidentes.</strong></h1>
+            <p class="lead">
+              Movisafe Cyber evalua accesos, endpoints, red, correo, respaldos, politicas y respuesta a incidentes para entregar evidencia ejecutiva, prioridades claras y un plan de remediacion accionable en 30 / 60 / 90 dias.
+            </p>
+            <div class="actions">
+              <a class="cta" href="#contacto">Agendar diagnostico</a>
+              <a class="cta ghost" href="#servicios">Ver alcance</a>
             </div>
-          </article>
-        ))}
-      </div>
+            <div class="trust">
+              <div><strong>48h</strong><span>Primer mapa de exposicion</span></div>
+              <div><strong>NIST</strong><span>Diagnostico alineado a CSF</span></div>
+              <div><strong>CDMX</strong><span>Atencion ejecutiva y remota</span></div>
+            </div>
+          </div>
 
-      <div class="hero-dots" aria-label="Navigation slider">
-        {slides.map((_, index) => (
-          <button
-            type="button"
-            class={`hero-dot ${index === 0 ? 'is-active' : ''}`}
-            data-slide-dot
-            data-target={index}
-            aria-label={`Voir slide ${index + 1}`}
-          ></button>
-        ))}
-      </div>
-    </section>
+          <div class="console" aria-label="Vista de auditoria Movisafe Cyber">
+            <div class="screen">
+              <div class="screenbar"><span></span><span></span><span></span></div>
+              <div class="audit-card main-card">
+                <h2>Movisafe Cyber Risk Audit</h2>
+                <p>Revision de identidad, correo, dispositivos, red, respaldos, nube, politicas, proveedores y respuesta a incidentes.</p>
+                <div class="risk-row"><span>Madurez actual</span><strong>62%</strong></div>
+                <div class="meter"><span></span></div>
+              </div>
+              <div class="audit-card">
+                <h3>Hallazgos criticos priorizados</h3>
+                <p>MFA incompleto, cuentas compartidas, backups sin prueba, exposicion de correo y baja conciencia ante phishing.</p>
+              </div>
+              <div class="audit-card">
+                <h3>Evidencia para direccion</h3>
+                <p>Matriz de riesgo, impacto al negocio, quick wins, responsables sugeridos y roadmap de remediacion.</p>
+              </div>
+              <div class="floating"><span>Resultado esperado</span><strong>Riesgo visible</strong><p>Decisiones claras para invertir donde hay mas exposicion, no donde hay mas ruido.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    <section id="quienes" class="section about">
-      <div class="container about-grid">
-        <div class="about-content">
-          <p class="eyebrow">QUIENES SOMOS</p>
-          <h1>EXPERTOS EN SEGURIDAD INTEGRAL</h1>
-          <div class="divider"></div>
+      <section id="servicios">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>Auditoria practica para empresas que necesitan claridad, no alarmismo.</h2>
+            <p>Evaluamos la operacion real, traducimos los hallazgos a riesgo de negocio y dejamos un plan que direccion, TI y usuarios pueden ejecutar.</p>
+          </div>
+          <div class="cards">
+            {services.map((service) => (
+              <article class="card">
+                <span class="card-kicker">{service.kicker}</span>
+                <h3>{service.title}</h3>
+                <p>{service.text}</p>
+                <div class="list">
+                  {service.items.map((item) => <div><span>+</span>{item}</div>)}
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
-          <div class="stats-grid">
-            {stats.map((item) => (
-              <article class="stat-card">
-                <img src={item.icon} alt="" aria-hidden="true" loading="lazy" />
-                <p class="stat-value">{item.value}</p>
-                <p class="stat-label">{item.label}</p>
+      <section id="proceso">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>Del diagnostico a la remediacion, sin perder semanas.</h2>
+            <p>El proceso esta disenado para obtener evidencia rapido, priorizar lo critico y convertir los hallazgos en acciones medibles.</p>
+          </div>
+          <div class="process">
+            {process.map((step) => (
+              <article class="step">
+                <div>{step.num}</div>
+                <h3>{step.title}</h3>
+                <p>{step.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="academia">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>Capacitacion que baja el riesgo donde mas ataques empiezan: las personas.</h2>
+            <p>Sesiones practicas para que el equipo detecte enganos, proteja accesos, cuide informacion sensible y reporte a tiempo.</p>
+          </div>
+          <div class="platform">
+            {training.map((item) => (
+              <article class="platform-card">
+                <span class="tag">{item.tag}</span>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="planes">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>Elige el nivel de profundidad que tu empresa necesita.</h2>
+            <p>Desde un diagnostico rapido hasta un programa completo de auditoria, plan de remediacion y concienciacion cyber.</p>
+          </div>
+          <div class="pricing">
+            {plans.map((plan) => (
+              <article class={`price ${plan.featured ? 'featured' : ''}`}>
+                <h3>{plan.title}</h3>
+                <p>{plan.text}</p>
+                <div class="amount">{plan.amount}</div>
+                <ul>
+                  {plan.items.map((item) => <li>{item}</li>)}
+                </ul>
+                <a class={`cta ${plan.featured ? '' : 'ghost'}`} href="#contacto">{plan.cta}</a>
               </article>
             ))}
           </div>
 
-          <a class="btn btn-red" href="/quienes-somos/">SABER MAS</a>
-        </div>
-
-        <div class="about-media">
-          <img src="/images/movisafe/exp_esp.webp" alt="Experiencia Movisafe" loading="lazy" />
-          <div class="experience-badge">
-            <span>23</span>
-            <small>ANOS DE EXPERIENCIA</small>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="clientes" class="section clients">
-      <div class="container center-content">
-        <h2>Nuestros Clientes</h2>
-        <div class="divider"></div>
-
-        <div class="client-logos" role="list">
-          {clients.map((logo) => (
-            <figure role="listitem">
-              <img src={logo} alt="Logo cliente" loading="lazy" />
-            </figure>
-          ))}
-        </div>
-
-        <a class="btn btn-red" href="/nuestrosclientes/">SABER MAS</a>
-      </div>
-    </section>
-
-    <section id="soluciones" class="section solutions">
-      <div class="container center-content">
-        <h2>Nuestras Soluciones</h2>
-        <div class="divider divider-light"></div>
-
-        <div class="solutions-grid">
-          {solutions.map((solution) => (
-            <article class="solution-card" style={`background-image:url('${solution.image}')`}>
-              <div class="solution-overlay">
-                <a href={solution.href} class="btn btn-outline">{solution.title}</a>
+          <form class="quote" id="cotizador" action="https://formspree.io/f/mdaprrdp" method="post">
+            <div>
+              <span class="tag">Cotizador express</span>
+              <h3>Estima el alcance de tu diagnostico.</h3>
+              <p>Obten una referencia rapida segun cantidad de equipos, exposicion digital, sedes y controles actuales. El alcance final se valida en una llamada tecnica.</p>
+              <div class="quote-form">
+                <label class="field wide" for="devices">
+                  Equipos a revisar
+                  <div class="range-row">
+                    <input id="devices" name="devices" type="range" min="5" max="250" step="5" value="40" />
+                    <span class="range-value" id="devicesValue">40</span>
+                  </div>
+                </label>
+                <label class="field" for="exposure">
+                  Exposicion
+                  <select id="exposure" name="exposure">
+                    <option value="1">Baja: oficina y correo</option>
+                    <option value="1.18" selected>Media: nube y VPN</option>
+                    <option value="1.38">Alta: e-commerce / datos sensibles</option>
+                  </select>
+                </label>
+                <label class="field" for="controls">
+                  Controles actuales
+                  <select id="controls" name="controls">
+                    <option value="1.15">Basicos o sin evidencia</option>
+                    <option value="1" selected>Parciales: MFA / backups</option>
+                    <option value=".9">Maduros: politicas y monitoreo</option>
+                  </select>
+                </label>
+                <label class="field" for="locations">
+                  Sedes
+                  <select id="locations" name="locations">
+                    <option value="0" selected>1 sede</option>
+                    <option value="4500">2 a 3 sedes</option>
+                    <option value="8500">4+ sedes</option>
+                  </select>
+                </label>
+                <label class="field" for="training">
+                  Agregar capacitacion
+                  <select id="training" name="training">
+                    <option value="0" selected>No por ahora</option>
+                    <option value="8500">Webinar ejecutivo</option>
+                    <option value="18000">Webinar + curso grabado</option>
+                  </select>
+                </label>
               </div>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <section class="section commitment">
-      <div class="container center-content">
-        <h2>Nuestro compromiso</h2>
-        <div class="divider"></div>
-
-        <div class="commitment-grid">
-          {commitments.map((item, index) => (
-            <article class="commitment-card">
-              <div class="icon" aria-hidden="true">
-                {
-                  index === 0 ? (
-                    <svg viewBox="0 0 24 24" role="presentation">
-                      <path d="M12 2l8 3v6c0 5-3.4 9.7-8 11-4.6-1.3-8-6-8-11V5l8-3zm0 2.2L6 6.4v4.5c0 3.8 2.5 7.4 6 8.5 3.5-1.1 6-4.7 6-8.5V6.4l-6-2.2z"></path>
-                    </svg>
-                  ) : index === 1 ? (
-                    <svg viewBox="0 0 24 24" role="presentation">
-                      <path d="M5 3h14v18H5V3zm2 2v14h10V5H7zm1.7 7.7l1.6-1.6 1.7 1.7 3.3-3.3 1.4 1.4-4.7 4.7-3.3-3.3z"></path>
-                    </svg>
-                  ) : (
-                    <svg viewBox="0 0 24 24" role="presentation">
-                      <path d="M3 5h14v10H3V5zm2 2v6h10V7H5zm15 2h1a2 2 0 012 2v2h-3v3h-4v-3h-2v-2h3a2 2 0 012-2h1V9z"></path>
-                    </svg>
-                  )
-                }
-              </div>
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <section id="contacto" class="section contact">
-      <div class="contact-overlay"></div>
-      <div class="container contact-grid">
-        <div class="contact-form-wrap">
-          <p class="eyebrow light">CONTACTENOS</p>
-          <h2>Deje sus datos y nosotros le contactaremos</h2>
-          <div class="divider divider-light"></div>
-
-          <form class="contact-form" action="https://formspree.io/f/mdaprrdp" method="post">
-            <label>
-              Nombre completo
-              <input type="text" name="name" placeholder="Nombre completo" />
-            </label>
-            <div class="form-row">
-              <label>
-                Correo
-                <input type="email" name="email" placeholder="Correo" required />
-              </label>
-              <label>
-                Telefono
-                <input type="tel" name="phone" placeholder="Telefono" required />
-              </label>
             </div>
-            <label>
-              Mensaje
-              <textarea name="message" rows="4" placeholder="Mensaje"></textarea>
-            </label>
-            <button class="btn btn-red" type="submit">Enviar</button>
+
+            <div class="quote-result" aria-live="polite">
+              <div>
+                <span>Diagnostico Express estimado</span>
+                <div class="quote-total" id="quoteTotal">$38,000 MXN</div>
+                <p id="quoteNote">Referencia antes de IVA. Puede variar por alcance tecnico, accesos y urgencia.</p>
+              </div>
+              <div class="quote-grid">
+                <div><span>Entrega</span><strong id="quoteDelivery">48h</strong></div>
+                <div><span>Alcance</span><strong id="quoteScope">PyME</strong></div>
+              </div>
+              <ul>
+                <li id="quoteDevices">40 equipos considerados</li>
+                <li id="quoteRisk">Exposicion media con controles parciales</li>
+                <li id="quoteAddon">Sin capacitacion adicional</li>
+              </ul>
+              <div class="quote-contact">
+                <label class="field" for="name">Nombre<input id="name" name="name" type="text" autocomplete="name" required /></label>
+                <label class="field" for="email">Email<input id="email" name="email" type="email" autocomplete="email" required /></label>
+                <label class="field" for="company">Empresa<input id="company" name="company" type="text" autocomplete="organization" /></label>
+                <label class="field" for="phone">Telefono<input id="phone" name="phone" type="tel" autocomplete="tel" /></label>
+                <label class="field wide" for="message">Notas<textarea id="message" name="message" placeholder="Cuentanos si hay sistemas criticos, sedes o urgencia especial."></textarea></label>
+              </div>
+              <input type="hidden" name="_subject" value="Cotizacion Movisafe Cyber" />
+              <input type="hidden" name="estimated_price" id="estimatedPrice" />
+              <input type="hidden" name="delivery" id="deliveryValue" />
+              <input type="hidden" name="scope" id="scopeValue" />
+              <input type="hidden" name="quote_summary" id="quoteSummary" />
+              <button class="cta" type="submit">Enviar datos para propuesta</button>
+            </div>
           </form>
         </div>
+      </section>
 
-        <aside class="contact-card">
-          <p>(55) 5576 9027 / (55) 8934 9750</p>
-          <p>contacto@movisafe.com</p>
-          <p>
-            Boulevard de Popocatepetl 285,<br />
-            Col. Los Pirules, CP 54040,<br />
-            Tlalnepantla de Baz, Edo. de Mexico
-          </p>
-          <p>Lunes a Viernes<br />9:00 hrs - 18:00 hrs</p>
-          <p><a href="/aviso-de-privacidad/">Aviso de Privacidad</a></p>
-        </aside>
+      <section id="contacto">
+        <div class="wrap">
+          <div class="cta-band">
+            <div>
+              <h2>Tu empresa esta preparada para el proximo ataque?</h2>
+              <p>Agenda una llamada con Movisafe Cyber y recibe una ruta clara para evaluar, corregir y capacitar a tu equipo.</p>
+            </div>
+            <div class="contact-box">
+              <form class="contact-form" action="https://formspree.io/f/mdaprrdp" method="post">
+                <input type="hidden" name="_subject" value="Solicitud Movisafe Cyber" />
+                <label>Nombre<input name="name" type="text" autocomplete="name" required /></label>
+                <label>Email<input name="email" type="email" autocomplete="email" required /></label>
+                <label>Telefono<input name="phone" type="tel" autocomplete="tel" required /></label>
+                <label>Empresa<input name="company" type="text" autocomplete="organization" /></label>
+                <label class="wide">Servicio de interes
+                  <select name="service" required>
+                    <option value="Diagnostico Express">Diagnostico Express</option>
+                    <option value="Auditoria + Plan">Auditoria + Plan</option>
+                    <option value="Concienciacion Cyber">Concienciacion Cyber</option>
+                    <option value="Otro">Otro</option>
+                  </select>
+                </label>
+                <label class="wide">Mensaje<textarea name="message" placeholder="Cuentanos cuantos equipos tienen, que sistemas criticos usan o que necesitas cotizar."></textarea></label>
+                <button class="cta wide" type="submit">Enviar solicitud</button>
+              </form>
+              <div class="contact-mini">
+                <div><strong>Telefono:</strong> +52 1 55 6350 2870</div>
+                <div><strong>Email:</strong> contacto@movisafe.com</div>
+                <div><strong>Ubicacion:</strong> Ciudad de Mexico</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-grid">
+          <div>
+            <img class="footer-logo" src="/images/movisafe/Movisafe-logo-1000x348-v1.0.svg" alt="Movisafe" />
+            <p>Movisafe Cyber extiende la experiencia de Movisafe en seguridad integral hacia riesgos digitales: auditoria, diagnostico ejecutivo, plan de remediacion y capacitacion practica.</p>
+          </div>
+          <div>
+            <h3>Transparencia</h3>
+            <a href="/aviso-de-privacidad/">Aviso de privacidad</a>
+            <a href="#contacto">Solicitud de propuesta</a>
+          </div>
+          <div>
+            <h3>Servicios</h3>
+            <a href="#servicios">Auditorias de ciberseguridad</a>
+            <a href="#academia">Formacion y concienciacion</a>
+            <a href="#planes">Diagnostico NIST CSF</a>
+          </div>
+          <div>
+            <h3>Contacto</h3>
+            <a href="tel:+5215563502870">+52 1 55 6350 2870</a>
+            <a href="mailto:contacto@movisafe.com">contacto@movisafe.com</a>
+            <span>Ciudad de Mexico</span>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>Copyright 2026 - Movisafe Cyber</span>
+          <span>servicios de ciberseguridad empresarial Mexico CDMX - auditorias de ciberseguridad - NIST CSF - gestion de riesgos tecnologicos - capacitacion antiphishing</span>
+        </div>
       </div>
-    </section>
-  </main>
-
-  <footer class="site-footer" id="footer-links">
-    <div class="container footer-links">
-      <SeoFooterText locale="es" pageKey="home" />
-      <a href="/quienes-somos/">Quienes Somos</a>
-      <a href="/nuestrosclientes/">Nuestros Clientes</a>
-      <a href="/prevencion/">Nuestras Soluciones</a>
-      <a href="/nuestro-equipo/">Unase a nuestro equipo</a>
-      <a href="/blog/">Noticias</a>
-      <span class="lang-switch footer-lang-switch">
-        <a class="is-current" href="/">ESP</a>
-        <a href="/en/">EN</a>
-        <a href="/fr/">FR</a>
-      </span>
-    </div>
-  </footer>
+    </footer>
+  </div>
 </Layout>
 
 <style>
-  .site-header {
-    position: sticky;
-    top: 0;
-    z-index: 40;
-    background: color-mix(in srgb, var(--mv-blue) 96%, black);
-    box-shadow: 0 8px 20px rgb(0 0 0 / 0.2);
+  :global(body) {
+    background: #03080d;
   }
 
-  .nav-wrap {
-    display: grid;
-    grid-template-columns: 170px 1fr;
-    align-items: center;
-    min-height: 78px;
-    gap: 1.5rem;
+  .landing-shell {
+    --bg: #03080d;
+    --panel: rgba(255, 255, 255, 0.075);
+    --panel-strong: rgba(255, 255, 255, 0.11);
+    --line: rgba(91, 215, 181, 0.2);
+    --text: #f5fff9;
+    --muted: #a9beb6;
+    --green: #5bd7b5;
+    --green-strong: #21b985;
+    --cyan: #69c7e8;
+    --red: #b8333a;
+    --shadow: 0 28px 90px rgba(0, 0, 0, 0.5);
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: var(--text);
+    background:
+      radial-gradient(circle at 8% 3%, rgba(91, 215, 181, 0.2), transparent 27%),
+      radial-gradient(circle at 84% 10%, rgba(184, 51, 58, 0.2), transparent 24%),
+      linear-gradient(180deg, #03080d 0%, #08141d 46%, #03080d 100%);
   }
 
-  .brand img {
-    width: 150px;
+  .landing-shell * {
+    box-sizing: border-box;
   }
 
-  .primary-nav ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 1.1rem;
+  .texture {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.16;
+    background-image:
+      linear-gradient(rgba(91, 215, 181, 0.12) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(91, 215, 181, 0.12) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: linear-gradient(to bottom, black, transparent 82%);
   }
 
-  .primary-nav a {
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    color: #ffffff;
-    text-transform: uppercase;
-    transition: color 0.2s ease;
-  }
-
-  .primary-nav a:hover {
-    color: #d6e4ff;
-  }
-
-  .lang-dropdown {
+  .wrap {
+    width: min(1180px, calc(100% - 42px));
+    margin: 0 auto;
     position: relative;
   }
 
-  .lang-trigger {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.2rem;
-    border: 0;
-    background: none;
-    color: #ffffff;
-    font: inherit;
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    cursor: pointer;
-    padding: 0;
-  }
-
-  .lang-trigger svg {
-    width: 16px;
-    height: 16px;
-    transition: transform 0.2s ease;
-    fill: currentColor;
-  }
-
-  .lang-dropdown.is-open .lang-trigger svg {
-    transform: rotate(180deg);
-  }
-
-  .lang-menu {
-    position: absolute;
-    top: calc(100% + 0.35rem);
-    right: 0;
-    min-width: 52px;
-    list-style: none;
-    margin: 0;
-    padding: 0.3rem 0;
-    border-left: 1px solid rgb(255 255 255 / 0.32);
-    background: rgb(5 18 42 / 0.94);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-5px);
-    transition: opacity 0.2s ease, transform 0.2s ease;
+  .topbar {
+    position: sticky;
+    top: 0;
     z-index: 30;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(3, 8, 13, 0.76);
+    backdrop-filter: blur(22px);
   }
 
-  .lang-dropdown.is-open .lang-menu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+  .nav {
+    height: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
   }
 
-  .lang-menu a {
-    display: block;
-    padding: 0.2rem 0.55rem;
-    font-size: 0.68rem;
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 900;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    border-left: 1px solid transparent;
   }
 
-  .lang-menu a:hover {
-    border-left-color: rgb(255 255 255 / 0.88);
+  .brand img {
+    width: 148px;
+    height: auto;
+    filter: brightness(0) invert(1);
+  }
+
+  .brand span {
+    color: var(--green);
+    font-size: 13px;
+    border-left: 1px solid rgba(255, 255, 255, 0.22);
+    padding-left: 12px;
+  }
+
+  .navlinks {
+    display: flex;
+    gap: 24px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .navlinks a:hover {
+    color: #fff;
   }
 
   .menu-toggle {
     display: none;
-    margin-left: auto;
-    border: 0;
-    background: none;
-    width: 42px;
-    height: 42px;
-    padding: 0;
+    width: 46px;
+    height: 46px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.07);
+    color: #fff;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
   }
 
-  .menu-toggle span {
+  .menu-toggle span,
+  .menu-toggle span::before,
+  .menu-toggle span::after {
     display: block;
-    width: 24px;
+    width: 20px;
     height: 2px;
-    margin: 5px auto;
-    background: #ffffff;
+    border-radius: 99px;
+    background: currentColor;
+    content: '';
+    position: relative;
+  }
+
+  .menu-toggle span::before {
+    position: absolute;
+    top: -7px;
+  }
+
+  .menu-toggle span::after {
+    position: absolute;
+    top: 7px;
+  }
+
+  .menu-open .menu-toggle span {
+    background: transparent;
+  }
+
+  .menu-open .menu-toggle span::before {
+    top: 0;
+    transform: rotate(45deg);
+  }
+
+  .menu-open .menu-toggle span::after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 1px solid rgba(91, 215, 181, 0.45);
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--green), var(--green-strong));
+    color: #00180c;
+    font-weight: 900;
+    padding: 14px 20px;
+    box-shadow: 0 16px 44px rgba(91, 215, 181, 0.24);
+    transition: 0.25s transform, 0.25s box-shadow;
+    white-space: nowrap;
+  }
+
+  .cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 60px rgba(91, 215, 181, 0.36);
+  }
+
+  .ghost {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text);
+    border-color: rgba(255, 255, 255, 0.16);
+    box-shadow: none;
   }
 
   .hero {
-    position: relative;
-    min-height: 540px;
-    overflow: hidden;
-    background: #09213e;
+    padding: 86px 0 64px;
   }
 
-  .hero-track {
-    position: relative;
-    min-height: 540px;
-  }
-
-  .hero-slide {
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    visibility: hidden;
-    transform: scale(1.04);
-    transition: opacity 0.7s ease, transform 0.9s ease;
-  }
-
-  .hero-slide.is-active {
-    opacity: 1;
-    visibility: visible;
-    transform: scale(1);
-    z-index: 2;
-  }
-
-  .hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(100deg, rgb(7 19 43 / 0.82), rgb(3 20 44 / 0.48));
-  }
-
-  .hero-shape {
-    position: absolute;
-    top: 50%;
-    left: -190px;
-    width: min(1100px, 90vw);
-    transform: translateY(-50%);
-    opacity: 0.7;
-    pointer-events: none;
-  }
-
-  .hero-inner {
-    position: relative;
-    z-index: 3;
-    min-height: 540px;
-    display: flex;
-    align-items: center;
-  }
-
-  .hero-copy {
-    max-width: 560px;
-    color: #ffffff;
-    background: rgb(7 20 45 / 0.55);
-    border-left: 3px solid var(--mv-red);
-    padding: 1.45rem 1.5rem;
-  }
-
-  .hero-title {
-    margin: 0 0 0.35rem;
-    font-size: clamp(1.7rem, 4.7vw, 3.2rem);
-    font-weight: 900;
-    letter-spacing: 0.02em;
-    line-height: 1;
-  }
-
-  .hero-message {
-    margin: 0;
-    max-width: 480px;
-    font-size: clamp(1.02rem, 2.2vw, 1.4rem);
-    font-weight: 800;
-    line-height: 1.35;
-  }
-
-  .hero-dots {
-    position: absolute;
-    left: 50%;
-    bottom: 20px;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 0.5rem;
-    z-index: 4;
-  }
-
-  .hero-dot {
-    width: 11px;
-    height: 11px;
-    border: 1px solid #ffffff;
-    background: transparent;
-    border-radius: 50%;
-    cursor: pointer;
-  }
-
-  .hero-dot.is-active {
-    background: #ffffff;
-  }
-
-  .section {
-    padding: 4.25rem 0;
-  }
-
-  .about {
-    background: var(--mv-light);
-  }
-
-  .about-grid {
+  .hero-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
-    gap: 2.3rem;
+    grid-template-columns: 1.03fr 0.97fr;
+    gap: 54px;
     align-items: center;
+  }
+
+  .eyebrow,
+  .tag,
+  .card-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 9px 13px;
+    border: 1px solid rgba(91, 215, 181, 0.24);
+    border-radius: 999px;
+    background: rgba(91, 215, 181, 0.08);
+    color: #c9ffe9;
+    font-size: 13px;
+    font-weight: 800;
   }
 
   .eyebrow {
-    margin: 0;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: #5f6775;
+    margin-bottom: 22px;
   }
 
-  .about h1,
-  .section h2 {
-    margin: 0.45rem 0 0;
-    color: var(--mv-blue-deep);
-    font-size: clamp(1.5rem, 2.8vw, 2rem);
-    line-height: 1.1;
-    font-weight: 900;
-    text-transform: uppercase;
+  .eyebrow span {
+    width: 9px;
+    height: 9px;
+    border-radius: 99px;
+    background: var(--green);
+    box-shadow: 0 0 0 8px rgba(91, 215, 181, 0.12);
   }
 
-  .divider {
-    width: 140px;
-    height: 3px;
-    margin: 1.35rem 0 2rem;
-    background: var(--mv-red);
+  h1 {
+    margin: 0 0 26px;
+    font-size: clamp(42px, 6.2vw, 82px);
+    line-height: 0.96;
+    letter-spacing: -0.06em;
+    font-weight: 950;
   }
 
-  .center-content {
-    text-align: center;
+  h1 strong {
+    background: linear-gradient(90deg, #fff 0%, #c9ffe9 44%, #69c7e8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
-  .center-content .divider {
-    margin-left: auto;
-    margin-right: auto;
+  .lead {
+    max-width: 650px;
+    margin: 0 0 34px;
+    color: #d4e6de;
+    font-size: clamp(18px, 2vw, 22px);
+    line-height: 1.55;
   }
 
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1.1rem;
-  }
-
-  .stat-card {
-    text-align: center;
-    border-right: 1px solid rgb(0 0 0 / 0.08);
-    padding: 0.4rem 0.4rem 0.5rem;
-  }
-
-  .stat-card:last-child {
-    border-right: 0;
-  }
-
-  .stat-card img {
-    width: 35px;
-    margin: 0 auto 0.52rem;
-  }
-
-  .stat-value {
-    margin: 0;
-    font-size: clamp(1.45rem, 2vw, 2.05rem);
-    font-weight: 900;
-    color: #2a2f39;
-  }
-
-  .stat-label {
-    margin: 0.2rem 0 0;
-    font-size: 0.78rem;
-    color: #6c6f75;
-  }
-
-  .btn {
-    display: inline-block;
-    margin-top: 1.55rem;
-    padding: 0.42rem 0.9rem;
-    font-size: 0.72rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    border: 1px solid transparent;
-    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-  }
-
-  .btn-red {
-    background: var(--mv-red);
-    color: #ffffff;
-  }
-
-  .btn-red:hover {
-    background: var(--mv-blue);
-  }
-
-  .about-media {
-    position: relative;
-    padding: 0.35rem 0;
-  }
-
-  .about-media img {
-    width: 100%;
-    max-width: 490px;
-    margin-left: auto;
-  }
-
-  .experience-badge {
-    position: absolute;
-    left: -0.8rem;
-    bottom: 1.2rem;
+  .actions {
     display: flex;
-    align-items: flex-end;
-    gap: 0.55rem;
-    padding: 0.45rem 0.62rem;
-    border: 3px solid var(--mv-red);
-    background: rgb(255 255 255 / 0.88);
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
   }
 
-  .experience-badge span {
-    font-size: 3rem;
-    line-height: 0.92;
-    font-weight: 900;
-    color: #2a2f38;
-  }
-
-  .experience-badge small {
-    max-width: 74px;
-    font-size: 0.56rem;
-    line-height: 1.1;
-    font-weight: 700;
-    color: var(--mv-blue);
-    text-transform: uppercase;
-  }
-
-  .clients {
-    background: #ffffff;
-  }
-
-  .clients h2,
-  .commitment h2 {
-    color: var(--mv-blue-deep);
-  }
-
-  .client-logos {
+  .trust {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1.1rem;
-    align-items: center;
-    margin-top: 0.35rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
   }
 
-  .client-logos figure {
-    margin: 0;
-    padding: 0.3rem;
+  .trust div,
+  .quote-grid div {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.055);
+    padding: 14px 16px;
+    color: var(--muted);
+    font-size: 13px;
   }
 
-  .client-logos img {
-    width: min(280px, 100%);
-    margin: 0 auto;
+  .trust strong,
+  .quote-grid strong {
+    display: block;
+    color: #fff;
+    font-size: 22px;
+    margin-bottom: 2px;
   }
 
-  .solutions {
-    background: var(--mv-blue-deep);
-    color: #ffffff;
-  }
-
-  .solutions h2 {
-    color: #ffffff;
-  }
-
-  .divider-light {
-    background: #ffffff;
-  }
-
-  .solutions-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1rem;
-    margin-top: 0.2rem;
-  }
-
-  .solution-card {
-    min-height: 220px;
-    background-size: cover;
-    background-position: center;
+  .console {
     position: relative;
+    border: 1px solid rgba(153, 255, 214, 0.22);
+    border-radius: 34px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.045)),
+      url('/images/movisafe/pages/prevencion1.webp') center / cover;
+    box-shadow: var(--shadow);
+    padding: 18px;
     overflow: hidden;
   }
 
-  .solution-overlay {
-    position: absolute;
-    inset: 0;
+  .screen {
+    position: relative;
+    min-height: 530px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    background: rgba(7, 16, 24, 0.9);
+    padding: 22px;
+    overflow: hidden;
+  }
+
+  .screenbar {
+    height: 34px;
     display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    padding: 1rem;
-    background: linear-gradient(to top, rgb(0 0 0 / 0.74), rgb(0 0 0 / 0.05) 70%);
-    transition: background 0.25s ease;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 20px;
   }
 
-  .solution-card:hover .solution-overlay {
-    background: linear-gradient(to top, rgb(0 0 0 / 0.82), rgb(0 0 0 / 0.38));
+  .screenbar span {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: #ff5f57;
   }
 
-  .btn-outline {
-    margin: 0;
-    border-color: #ffffff;
-    color: #ffffff;
-    background: rgb(0 0 0 / 0.25);
-    min-width: 154px;
-    text-align: center;
+  .screenbar span:nth-child(2) {
+    background: #ffbd2e;
   }
 
-  .btn-outline:hover {
-    background: #ffffff;
-    color: var(--mv-blue-deep);
+  .screenbar span:nth-child(3) {
+    background: #28c840;
   }
 
-  .commitment {
-    background: var(--mv-light);
-  }
-
-  .commitment-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1.3rem;
-  }
-
-  .commitment-card {
-    text-align: center;
-    color: var(--mv-blue-deep);
-  }
-
-  .commitment-card .icon {
-    width: 64px;
-    height: 64px;
-    margin: 0 auto 0.58rem;
-    color: var(--mv-blue-deep);
-  }
-
-  .commitment-card svg {
-    width: 100%;
-    height: 100%;
-    fill: currentColor;
-  }
-
-  .commitment-card h3 {
-    margin: 0;
-    font-size: 1rem;
-    font-weight: 700;
-  }
-
-  .commitment-card p {
-    margin: 0.62rem 0 0;
-    font-size: 0.82rem;
-    line-height: 1.4;
-  }
-
-  .contact {
+  .audit-card {
     position: relative;
-    background-image: url('/images/movisafe/Recurso-1.webp');
-    background-size: cover;
-    background-position: center;
-    color: #ffffff;
+    border: 1px solid rgba(91, 215, 181, 0.18);
+    border-radius: 22px;
+    background: rgba(0, 0, 0, 0.28);
+    padding: 20px;
+    margin-bottom: 16px;
   }
 
-  .contact-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgb(0 0 0 / 0.62);
+  .audit-card h2,
+  .audit-card h3 {
+    margin: 0 0 12px;
+    font-size: 18px;
   }
 
-  .contact-grid {
-    position: relative;
-    z-index: 2;
-    display: grid;
-    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-    gap: 2.1rem;
-    align-items: start;
+  .audit-card p,
+  .floating p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.55;
+    font-size: 14px;
   }
 
-  .light {
-    color: rgb(255 255 255 / 0.86);
+  .risk-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+    color: #cde9de;
+    font-size: 13px;
   }
 
-  .contact h2 {
-    color: #ffffff;
-  }
-
-  .contact-form {
-    margin-top: 0.2rem;
-  }
-
-  .contact-form label {
+  .meter {
     display: block;
-    font-size: 0.8rem;
-    font-weight: 600;
-    margin-bottom: 0.72rem;
+    height: 9px;
+    margin-top: 8px;
+    border-radius: 99px;
+    background: rgba(255, 255, 255, 0.08);
+    overflow: hidden;
   }
 
-  .contact-form input,
-  .contact-form textarea {
-    width: 100%;
-    margin-top: 0.32rem;
-    border: 1px solid rgb(255 255 255 / 0.3);
-    background: #ffffff;
-    color: #232833;
-    padding: 0.52rem 0.64rem;
-    font: inherit;
+  .meter span {
+    display: block;
+    width: 78%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--red), #ffb86b, var(--green));
   }
 
-  .contact-form textarea {
-    resize: vertical;
-    min-height: 120px;
+  .floating {
+    position: absolute;
+    right: 20px;
+    bottom: 24px;
+    width: 230px;
+    border: 1px solid rgba(105, 199, 232, 0.22);
+    border-radius: 22px;
+    background: rgba(6, 18, 28, 0.86);
+    padding: 18px;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.38);
+    backdrop-filter: blur(18px);
   }
 
-  .form-row {
+  .floating span,
+  .quote-result > div > span,
+  .quote-grid span {
+    display: block;
+    color: var(--muted);
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+
+  .floating strong {
+    display: block;
+    font-size: 30px;
+    margin-bottom: 8px;
+  }
+
+  section {
+    padding: 82px 0;
+  }
+
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 40px;
+    margin-bottom: 34px;
+  }
+
+  .section-head h2 {
+    max-width: 760px;
+    margin: 0;
+    font-size: clamp(32px, 4.6vw, 58px);
+    line-height: 1;
+    letter-spacing: -0.05em;
+  }
+
+  .section-head p {
+    max-width: 410px;
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .cards {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.72rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
   }
 
-  .contact-form .btn {
-    margin-top: 0.25rem;
-    cursor: pointer;
+  .card,
+  .step,
+  .platform-card,
+  .price {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+    padding: 28px;
+    box-shadow: 0 20px 65px rgba(0, 0, 0, 0.22);
   }
 
-  .contact-card {
-    border: 3px solid rgb(255 255 255 / 0.8);
-    padding: 1.1rem 1rem;
-    font-size: 0.88rem;
-    line-height: 1.5;
-    background: rgb(25 26 33 / 0.24);
+  .card h3,
+  .platform-card h3,
+  .price h3 {
+    margin: 18px 0 12px;
+    font-size: 25px;
+    letter-spacing: -0.03em;
   }
 
-  .contact-card p {
-    margin: 0 0 1rem;
+  .card p,
+  .platform-card p,
+  .price p,
+  .step p,
+  .quote p,
+  .cta-band p,
+  .site-footer p {
+    color: #bbd2c8;
+    line-height: 1.65;
+    margin: 0;
   }
 
-  .contact-card p:last-child {
-    margin-bottom: 0;
-    color: #ffb4b7;
+  .list {
+    display: grid;
+    gap: 12px;
+    margin-top: 18px;
   }
 
-  .contact-card a {
-    color: #ffb4b7;
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
+  .list div {
+    display: flex;
+    gap: 10px;
+    color: #eafbF4;
+    font-size: 14px;
+  }
+
+  .list span {
+    color: var(--green);
+    font-weight: 900;
+  }
+
+  .process,
+  .platform,
+  .pricing {
+    display: grid;
+    gap: 18px;
+  }
+
+  .process {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .platform,
+  .pricing {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .step div {
+    color: var(--green);
+    font-weight: 900;
+    margin-bottom: 18px;
+  }
+
+  .step h3 {
+    margin: 0 0 10px;
+    font-size: 19px;
+  }
+
+  .price.featured {
+    border-color: rgba(91, 215, 181, 0.45);
+    background: linear-gradient(180deg, rgba(91, 215, 181, 0.14), rgba(255, 255, 255, 0.055));
+    transform: translateY(-10px);
+  }
+
+  .amount,
+  .quote-total {
+    margin: 20px 0 8px;
+    font-size: 36px;
+    font-weight: 950;
+    letter-spacing: -0.04em;
+  }
+
+  .price ul,
+  .quote-result ul {
+    display: grid;
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    color: #dff7ee;
+    font-size: 14px;
+  }
+
+  .price li::before,
+  .quote-result li::before {
+    content: '+';
+    margin-right: 9px;
+    color: var(--green);
+    font-weight: 900;
+  }
+
+  .quote,
+  .cta-band {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 24px;
+    margin-top: 28px;
+    border: 1px solid rgba(91, 215, 181, 0.24);
+    border-radius: 28px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.075), rgba(91, 215, 181, 0.08));
+    padding: 28px;
+    box-shadow: 0 22px 70px rgba(0, 0, 0, 0.24);
+  }
+
+  .quote h3,
+  .cta-band h2 {
+    margin: 12px 0 10px;
+    font-size: clamp(30px, 4.4vw, 54px);
+    line-height: 1;
+    letter-spacing: -0.05em;
+  }
+
+  .quote-form,
+  .quote-contact,
+  .contact-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 22px;
+  }
+
+  .field,
+  .contact-form label {
+    display: grid;
+    gap: 8px;
+    color: #dff7ee;
+    font-size: 13px;
+    font-weight: 800;
+  }
+
+  .wide {
+    grid-column: 1 / -1;
+  }
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 16px;
+    background: rgba(3, 8, 13, 0.72);
+    color: var(--text);
+    padding: 14px 15px;
+    font: inherit;
+    outline: none;
+  }
+
+  textarea {
+    min-height: 88px;
+    resize: vertical;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    border-color: rgba(91, 215, 181, 0.62);
+    box-shadow: 0 0 0 4px rgba(91, 215, 181, 0.1);
+  }
+
+  .range-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  input[type='range'] {
+    accent-color: var(--green);
+    padding: 0;
+  }
+
+  .range-value {
+    min-width: 78px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+    padding: 12px 10px;
+    background: rgba(255, 255, 255, 0.06);
+    font-weight: 900;
+  }
+
+  .quote-result,
+  .contact-box {
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 24px;
+    background: rgba(0, 0, 0, 0.25);
+    padding: 24px;
+  }
+
+  .quote-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .quote-total {
+    font-size: clamp(36px, 5vw, 56px);
+    line-height: 0.95;
+  }
+
+  .contact-mini {
+    display: grid;
+    gap: 9px;
+    margin-top: 18px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .contact-mini strong {
+    color: #fff;
   }
 
   .site-footer {
-    background: #f7f7f7;
-    border-top: 1px solid #ececec;
-    padding: 0.78rem 0;
+    padding: 68px 0 32px;
+    color: var(--muted);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(0, 0, 0, 0.24));
   }
 
-  .footer-links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.86rem;
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.25fr 0.75fr 0.9fr 1fr;
+    gap: 34px;
+    margin-bottom: 34px;
   }
 
-  .footer-links > a {
-    font-size: 0.63rem;
-    color: #d07183;
-    text-transform: lowercase;
+  .footer-logo {
+    width: 190px;
+    margin-bottom: 18px;
+    filter: brightness(0) invert(1);
   }
 
-  .footer-links .footer-lang-switch {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3rem;
-  }
-
-  .footer-links .footer-lang-switch a {
-    font-size: 0.6rem;
+  .site-footer h3 {
+    margin: 0 0 16px;
+    color: #fff;
+    font-size: 15px;
     text-transform: uppercase;
-    color: #8b3b48;
-    border: 1px solid #d8b0b7;
-    border-radius: 999px;
-    padding: 0.12rem 0.45rem;
+    letter-spacing: 0.08em;
   }
 
-  .footer-links .footer-lang-switch a.is-current {
-    color: #ffffff;
-    border-color: #8b3b48;
-    background: #8b3b48;
+  .site-footer a,
+  .site-footer span {
+    display: block;
+    color: var(--muted);
+    margin-bottom: 11px;
   }
 
-  @media (max-width: 1080px) {
-    .nav-wrap {
-      grid-template-columns: 145px 1fr;
-    }
-
-    .primary-nav ul {
-      gap: 0.75rem;
-    }
-
-    .primary-nav a {
-      font-size: 0.63rem;
-    }
-
-    .hero,
-    .hero-track,
-    .hero-inner {
-      min-height: 470px;
-    }
+  .site-footer a:hover {
+    color: #fff;
   }
 
-  @media (max-width: 900px) {
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 24px;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .footer-bottom span:last-child {
+    max-width: 720px;
+  }
+
+  @media (max-width: 940px) {
+    .nav {
+      height: 72px;
+      gap: 12px;
+    }
+
     .menu-toggle {
-      display: block;
+      display: flex;
+      flex: 0 0 auto;
     }
 
-    .primary-nav {
+    .navlinks {
+      display: none;
       position: absolute;
-      top: 100%;
+      top: calc(100% + 10px);
       left: 0;
       right: 0;
-      background: var(--mv-blue);
-      border-top: 1px solid rgb(255 255 255 / 0.15);
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-    }
-
-    .primary-nav.is-open {
-      max-height: 420px;
-    }
-
-    .primary-nav ul {
       flex-direction: column;
-      align-items: flex-start;
       gap: 0;
-      padding: 0.4rem 0;
+      padding: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 18px;
+      background: rgba(3, 8, 13, 0.96);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
     }
 
-    .primary-nav li {
-      width: 100%;
+    .menu-open .navlinks {
+      display: flex;
     }
 
-    .primary-nav a {
-      display: block;
-      width: 100%;
-      padding: 0.72rem 1.1rem;
-      font-size: 0.72rem;
+    .navlinks a {
+      padding: 14px 16px;
+      border-radius: 12px;
     }
 
-    .lang-dropdown {
-      padding: 0.52rem 1.1rem 0.92rem;
-    }
-
-    .lang-trigger {
-      font-size: 0.72rem;
-    }
-
-    .lang-menu {
-      position: static;
+    .nav-cta {
       display: none;
-      opacity: 1;
-      visibility: visible;
-      transform: none;
-      margin-top: 0.42rem;
-      background: rgb(255 255 255 / 0.05);
-      border-left: 1px solid rgb(255 255 255 / 0.2);
     }
 
-    .lang-dropdown.is-open .lang-menu {
+    .hero-grid,
+    .cards,
+    .quote,
+    .cta-band,
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .trust,
+    .process,
+    .platform,
+    .pricing {
+      grid-template-columns: 1fr;
+    }
+
+    .floating {
+      position: relative;
+      right: auto;
+      bottom: auto;
+      width: auto;
+      margin-top: 18px;
+    }
+
+    .price.featured {
+      transform: none;
+    }
+
+    .section-head {
       display: block;
     }
 
-    .lang-menu a {
-      width: auto;
-      font-size: 0.68rem;
-      padding: 0.4rem 0.68rem;
+    .section-head p {
+      margin-top: 18px;
     }
 
-    .about-grid,
-    .contact-grid {
-      grid-template-columns: 1fr;
-      gap: 1.8rem;
-    }
-
-    .about-media {
-      max-width: 620px;
-      margin: 0 auto;
-    }
-
-    .about-media img {
-      margin: 0 auto;
-    }
-
-    .experience-badge {
-      left: 0;
+    .hero {
+      padding-top: 56px;
     }
   }
 
-  @media (max-width: 760px) {
-    .hero,
-    .hero-track,
-    .hero-inner {
-      min-height: 410px;
+  @media (max-width: 640px) {
+    .wrap {
+      width: min(100% - 28px, 1180px);
     }
 
-    .hero-copy {
-      max-width: 90%;
-      padding: 1rem;
+    .brand img {
+      width: 124px;
     }
 
-    .section {
-      padding: 3.1rem 0;
+    .brand span {
+      font-size: 12px;
     }
 
-    .stats-grid,
-    .client-logos,
-    .solutions-grid,
-    .commitment-grid,
-    .form-row {
+    .hero {
+      padding: 44px 0 42px;
+    }
+
+    h1 {
+      font-size: clamp(38px, 13vw, 56px);
+      letter-spacing: -0.05em;
+    }
+
+    .actions .cta {
+      width: 100%;
+    }
+
+    .screen {
+      min-height: 0;
+    }
+
+    .console {
+      padding: 12px;
+      border-radius: 24px;
+    }
+
+    .quote,
+    .card,
+    .price,
+    .cta-band {
+      padding: 22px;
+      border-radius: 24px;
+    }
+
+    .quote-form,
+    .quote-contact,
+    .quote-grid,
+    .contact-form {
       grid-template-columns: 1fr;
     }
 
-    .stat-card {
-      border-right: 0;
-      border-bottom: 1px solid rgb(0 0 0 / 0.08);
-      padding-bottom: 1rem;
+    .range-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
     }
 
-    .stat-card:last-child {
-      border-bottom: 0;
-    }
-
-    .solution-card {
-      min-height: 190px;
-    }
-
-    .contact-card {
-      font-size: 0.82rem;
+    .footer-bottom {
+      display: grid;
     }
   }
 </style>
 
-<script is:inline>
-  const nav = document.querySelector('.primary-nav');
-  const toggle = document.querySelector('.menu-toggle');
-  const langDropdown = document.querySelector('.lang-dropdown');
-  const langTrigger = document.querySelector('.lang-trigger');
+<script>
+  const topbar = document.querySelector('.topbar');
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('#primary-navigation');
 
-  if (nav && toggle) {
-    toggle.addEventListener('click', () => {
-      const open = nav.classList.toggle('is-open');
-      toggle.setAttribute('aria-expanded', String(open));
-    });
-
-    nav.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => {
-        nav.classList.remove('is-open');
-        toggle.setAttribute('aria-expanded', 'false');
-      });
-    });
+  function setMenuOpen(isOpen) {
+    topbar?.classList.toggle('menu-open', isOpen);
+    menuToggle?.setAttribute('aria-expanded', String(isOpen));
+    menuToggle?.setAttribute('aria-label', isOpen ? 'Cerrar menu' : 'Abrir menu');
   }
 
-  if (langDropdown && langTrigger) {
-    langTrigger.addEventListener('click', (event) => {
-      event.stopPropagation();
-      const open = langDropdown.classList.toggle('is-open');
-      langTrigger.setAttribute('aria-expanded', String(open));
-    });
+  menuToggle?.addEventListener('click', () => {
+    setMenuOpen(!topbar?.classList.contains('menu-open'));
+  });
 
-    document.addEventListener('click', (event) => {
-      if (!(event.target instanceof Element) || !langDropdown.contains(event.target)) {
-        langDropdown.classList.remove('is-open');
-        langTrigger.setAttribute('aria-expanded', 'false');
-      }
-    });
+  navLinks?.addEventListener('click', (event) => {
+    if (event.target instanceof Element && event.target.closest('a')) {
+      setMenuOpen(false);
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.matchMedia('(min-width: 941px)').matches) {
+      setMenuOpen(false);
+    }
+  });
+
+  const quoteForm = document.querySelector('#cotizador');
+  const devicesValue = document.querySelector('#devicesValue');
+  const quoteTotal = document.querySelector('#quoteTotal');
+  const quoteDelivery = document.querySelector('#quoteDelivery');
+  const quoteScope = document.querySelector('#quoteScope');
+  const quoteDevices = document.querySelector('#quoteDevices');
+  const quoteRisk = document.querySelector('#quoteRisk');
+  const quoteAddon = document.querySelector('#quoteAddon');
+  const estimatedPrice = document.querySelector('#estimatedPrice');
+  const deliveryValue = document.querySelector('#deliveryValue');
+  const scopeValue = document.querySelector('#scopeValue');
+  const quoteSummary = document.querySelector('#quoteSummary');
+
+  const formatter = new Intl.NumberFormat('es-MX', {
+    style: 'currency',
+    currency: 'MXN',
+    maximumFractionDigits: 0
+  });
+
+  const labels = {
+    exposure: {
+      1: 'exposicion baja',
+      1.18: 'exposicion media',
+      1.38: 'exposicion alta'
+    },
+    controls: {
+      1.15: 'controles basicos',
+      1: 'controles parciales',
+      '.9': 'controles maduros'
+    },
+    training: {
+      0: 'Sin capacitacion adicional',
+      8500: 'Incluye webinar ejecutivo',
+      18000: 'Incluye webinar y curso grabado'
+    }
+  };
+
+  function calculateQuote() {
+    if (!(quoteForm instanceof HTMLFormElement)) return;
+
+    const data = new FormData(quoteForm);
+    const devices = Number(data.get('devices'));
+    const exposure = String(data.get('exposure'));
+    const controls = String(data.get('controls'));
+    const locations = Number(data.get('locations'));
+    const training = Number(data.get('training'));
+    const deviceBlock = Math.ceil(devices / 25);
+    const base = 22000 + deviceBlock * 5200;
+    const total = Math.round(((base * Number(exposure) * Number(controls)) + locations + training) / 500) * 500;
+    const delivery = devices > 120 || exposure === '1.38' ? '72h' : '48h';
+    const scope = devices < 50 ? 'PyME' : devices < 130 ? 'Empresa media' : 'Multiarea';
+    const trainingLabel = labels.training[String(training)];
+    const summary = `${devices} equipos | ${labels.exposure[exposure]} | ${labels.controls[controls]} | ${trainingLabel}`;
+
+    if (devicesValue) devicesValue.textContent = String(devices);
+    if (quoteTotal) quoteTotal.textContent = `${formatter.format(total)} MXN`;
+    if (quoteDelivery) quoteDelivery.textContent = delivery;
+    if (quoteScope) quoteScope.textContent = scope;
+    if (quoteDevices) quoteDevices.textContent = `${devices} equipos considerados`;
+    if (quoteRisk) quoteRisk.textContent = `${labels.exposure[exposure]} con ${labels.controls[controls]}`;
+    if (quoteAddon) quoteAddon.textContent = trainingLabel;
+    if (estimatedPrice instanceof HTMLInputElement) estimatedPrice.value = `${formatter.format(total)} MXN`;
+    if (deliveryValue instanceof HTMLInputElement) deliveryValue.value = delivery;
+    if (scopeValue instanceof HTMLInputElement) scopeValue.value = scope;
+    if (quoteSummary instanceof HTMLInputElement) quoteSummary.value = summary;
   }
 
-  const slides = Array.from(document.querySelectorAll('[data-slide]'));
-  const dots = Array.from(document.querySelectorAll('[data-slide-dot]'));
-
-  if (slides.length > 1 && dots.length === slides.length) {
-    let current = 0;
-    let timer;
-
-    const setSlide = (nextIndex) => {
-      slides.forEach((slide, index) => {
-        const isActive = index === nextIndex;
-        slide.classList.toggle('is-active', isActive);
-        slide.setAttribute('aria-hidden', String(!isActive));
-      });
-
-      dots.forEach((dot, index) => {
-        dot.classList.toggle('is-active', index === nextIndex);
-      });
-
-      current = nextIndex;
-    };
-
-    const restart = () => {
-      clearInterval(timer);
-      timer = setInterval(() => {
-        setSlide((current + 1) % slides.length);
-      }, 5000);
-    };
-
-    dots.forEach((dot, index) => {
-      dot.addEventListener('click', () => {
-        setSlide(index);
-        restart();
-      });
-    });
-
-    restart();
-  }
+  quoteForm?.addEventListener('input', calculateQuote);
+  calculateQuote();
 </script>
