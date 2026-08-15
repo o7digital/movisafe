@@ -369,7 +369,7 @@ const siteCode = 'movisafe';
     const t = copy[lang] || copy.en;
     let isOpen = false;
     let isLoading = false;
-    let leadSent = false;
+    let leadSent = true;
     let presenceInactive = false;
     let presenceTimer;
     let messages = [{ role: 'assistant', content: t.welcome }];
