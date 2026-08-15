@@ -25,10 +25,16 @@ const siteCode = 'movisafe';
     flex-direction: column;
     overflow: hidden;
     border: 1px solid rgba(214, 178, 100, 0.42);
-    border-radius: 18px;
-    background: #090909;
+    border-radius: 28px;
+    background: linear-gradient(155deg, rgba(25, 25, 25, 0.98), rgba(5, 5, 5, 0.99));
     color: #fff;
-    box-shadow: 0 28px 90px rgba(0, 0, 0, 0.58);
+    box-shadow:
+      0 52px 90px -30px rgba(0, 0, 0, 0.82),
+      0 22px 42px -24px rgba(0, 0, 0, 0.72),
+      inset 0 1px 0 rgba(255, 255, 255, 0.16);
+    transform: perspective(1200px) translateY(-8px) rotateX(0.45deg) rotateY(-0.45deg);
+    animation: sofia-float 5.5s ease-in-out infinite;
+    will-change: transform;
   }
 
   .sofia-panel.is-open {
@@ -56,9 +62,31 @@ const siteCode = 'movisafe';
   }
 
   .sofia-status {
-    margin: 4px 0 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 7px 0 0;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
     color: rgba(255, 255, 255, 0.68);
     font-size: 13px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .sofia-presence-dot {
+    width: 9px;
+    height: 9px;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.14), 0 0 14px rgba(34, 197, 94, 0.8);
+    transition: background 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .sofia-status.is-inactive .sofia-presence-dot {
+    background: #f59e0b;
+    box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.14), 0 0 14px rgba(245, 158, 11, 0.75);
   }
 
   .sofia-close,
@@ -227,7 +255,12 @@ const siteCode = 'movisafe';
     height: 68px;
     padding: 0 14px;
     border-radius: 999px;
-    box-shadow: 0 16px 44px rgba(0, 0, 0, 0.42);
+    box-shadow: 0 28px 48px -20px rgba(0, 0, 0, 0.72), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  }
+
+  @keyframes sofia-float {
+    0%, 100% { transform: perspective(1200px) translateY(-8px) rotateX(0.45deg) rotateY(-0.45deg); }
+    50% { transform: perspective(1200px) translateY(-14px) rotateX(0.7deg) rotateY(-0.2deg); }
   }
 
   @media (max-width: 560px) {
@@ -239,6 +272,10 @@ const siteCode = 'movisafe';
     .sofia-lead {
       grid-template-columns: 1fr;
     }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sofia-panel { animation: none; }
   }
 </style>
 
@@ -333,6 +370,8 @@ const siteCode = 'movisafe';
     let isOpen = false;
     let isLoading = false;
     let leadSent = false;
+    let presenceInactive = false;
+    let presenceTimer;
     let messages = [{ role: 'assistant', content: t.welcome }];
     let lead = { firstName: '', lastName: '', email: '', phone: '' };
 
@@ -355,7 +394,7 @@ const siteCode = 'movisafe';
           <header class="sofia-header">
             <div>
               <p class="sofia-title">${escapeHtml(t.title)}</p>
-              <p class="sofia-status">${escapeHtml(t.status)} · ${escapeHtml(t.online)}</p>
+              <p class="sofia-status ${presenceInactive ? 'is-inactive' : ''}"><span class="sofia-presence-dot" aria-hidden="true"></span>${escapeHtml(t.status)} · ${escapeHtml(t.online)}</p>
             </div>
             <button type="button" class="sofia-close" aria-label="${escapeHtml(t.close)}">x</button>
           </header>
@@ -389,6 +428,26 @@ const siteCode = 'movisafe';
       const messagesNode = root.querySelector('.sofia-messages');
       if (messagesNode) messagesNode.scrollTop = messagesNode.scrollHeight;
     };
+
+    const updatePresence = () => {
+      const status = root.querySelector('.sofia-status');
+      status?.classList.toggle('is-inactive', presenceInactive);
+    };
+
+    const markActive = () => {
+      presenceInactive = false;
+      updatePresence();
+      clearTimeout(presenceTimer);
+      presenceTimer = setTimeout(() => {
+        presenceInactive = true;
+        updatePresence();
+      }, 45000);
+    };
+
+    ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach((eventName) => {
+      window.addEventListener(eventName, markActive, { passive: true });
+    });
+    markActive();
 
     const saveLeadFields = () => {
       const form = root.querySelector('.sofia-lead');
